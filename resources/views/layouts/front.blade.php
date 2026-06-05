@@ -27,14 +27,38 @@
                 <a href="#" class="hover:underline">Help & Contact</a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="#" class="hover:underline">Sell</a>
-                <a href="#" class="hover:underline">Watchlist</a>
-                <a href="#" class="hover:underline flex items-center gap-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                </a>
-                <a href="#" class="hover:underline flex items-center gap-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                </a>
+                @auth
+                    <a href="{{ route('marketplace.create') }}" class="hover:underline">Sell</a>
+                @else
+                    <a href="{{ route('login') }}" class="hover:underline">Sell</a>
+                @endauth
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="hover:underline">Watchlist</a>
+                @else
+                    <a href="{{ route('login') }}" class="hover:underline">Watchlist</a>
+                @endauth
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="hover:underline flex items-center gap-1" title="Notifications">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="hover:underline flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    </a>
+                @endauth
+                @auth
+                    @php $cartCount = count(session()->get('cart', [])); @endphp
+                    <a href="{{ route('cart.index') }}" class="hover:underline flex items-center gap-1 relative" title="Shopping Cart">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        @if($cartCount > 0)
+                            <span class="absolute -top-1.5 -right-2 bg-red-500 text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">{{ $cartCount }}</span>
+                        @endif
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" class="hover:underline flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </a>
+                @endauth
             </div>
         </div>
     </div>
@@ -56,20 +80,25 @@
             </div>
 
             <!-- Search Bar -->
-            <div class="flex-1 flex border-2 border-gray-800 rounded-sm overflow-hidden">
+            <form action="{{ url('/products') }}" method="GET" class="flex-1 flex border-2 border-gray-800 rounded-sm overflow-hidden">
                 <div class="flex items-center px-3 text-gray-500 bg-white border-r border-gray-300">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <input type="text" class="w-full border-0 py-2.5 px-3 text-gray-800 placeholder-gray-500 focus:ring-0" placeholder="Search for PC Parts, GPUs, CPUs...">
-                <select class="hidden md:block bg-white border-l border-r-0 border-t-0 border-b-0 border-gray-300 text-gray-600 text-sm focus:ring-0 py-0 pl-3 pr-8">
-                    <option>All Categories</option>
-                    <option>Graphics Cards</option>
-                    <option>Processors</option>
-                    <option>Motherboards</option>
-                    <option>Memory</option>
+                <input type="text" name="search" value="{{ request('search') }}" class="w-full border-0 py-2.5 px-3 text-gray-800 placeholder-gray-500 focus:ring-0" placeholder="Search for PC Parts, GPUs, CPUs...">
+                <select name="category" class="hidden md:block bg-white border-l border-r-0 border-t-0 border-b-0 border-gray-300 text-gray-600 text-sm focus:ring-0 py-0 pl-3 pr-8">
+                    <option value="">All Categories</option>
+                    <option value="Graphics Card" {{ request('category') == 'Graphics Card' ? 'selected' : '' }}>Graphics Cards</option>
+                    <option value="Processor" {{ request('category') == 'Processor' ? 'selected' : '' }}>Processors</option>
+                    <option value="Motherboard" {{ request('category') == 'Motherboard' ? 'selected' : '' }}>Motherboards</option>
+                    <option value="Memory" {{ request('category') == 'Memory' ? 'selected' : '' }}>Memory</option>
+                    <option value="Storage" {{ request('category') == 'Storage' ? 'selected' : '' }}>Storage</option>
+                    <option value="Power Supply" {{ request('category') == 'Power Supply' ? 'selected' : '' }}>Power Supplies</option>
+                    <option value="PC Case" {{ request('category') == 'PC Case' ? 'selected' : '' }}>PC Cases</option>
+                    <option value="Monitor" {{ request('category') == 'Monitor' ? 'selected' : '' }}>Monitors</option>
+                    <option value="Apple Devices" {{ request('category') == 'Apple Devices' ? 'selected' : '' }}>Apple Devices</option>
                 </select>
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 font-medium transition-colors" style="background-color: #0064D2;">Search</button>
-            </div>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 font-medium transition-colors" style="background-color: #0064D2;">Search</button>
+            </form>
 
             <a href="#" class="text-xs text-gray-500 hover:text-blue-600 hidden lg:block flex-shrink-0">Advanced</a>
         </div>

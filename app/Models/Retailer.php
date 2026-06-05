@@ -13,6 +13,7 @@ class Retailer extends Model
         'name',
         'website_url',
         'logo_path',
+        'location',
     ];
 
     public function products()

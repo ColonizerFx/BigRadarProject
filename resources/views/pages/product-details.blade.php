@@ -35,7 +35,27 @@
                 </div>
                 <div class="text-gray-500">|</div>
                 <div class="text-gray-500">Brand: <span class="font-bold text-gray-900">{{ $product->brand }}</span></div>
+                @auth
+                <div class="text-gray-500">|</div>
+                <form action="{{ route('wishlist.toggle') }}" method="POST" class="inline">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    @php
+                        $isWishlisted = \App\Models\Wishlist::where('user_id', Auth::id())->where('product_id', $product->id)->exists();
+                    @endphp
+                    <button type="submit" class="flex items-center gap-1 {{ $isWishlisted ? 'text-red-500' : 'text-gray-500 hover:text-red-500' }} transition-colors">
+                        <svg class="w-4 h-4" fill="{{ $isWishlisted ? 'currentColor' : 'none' }}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        {{ $isWishlisted ? 'Wishlisted' : 'Add to Wishlist' }}
+                    </button>
+                </form>
+                @endauth
             </div>
+
+            @if(session('success'))
+                <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded mb-4 text-sm">
+                    {{ session('success') }}
+                </div>
+            @endif
 
             <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
                 @php
@@ -111,9 +131,25 @@
                             <div class="text-xs text-gray-500">+ Shipping</div>
                         </td>
                         <td class="px-6 py-6 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="{{ $retailer->pivot->product_url }}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full inline-block transition-colors shadow-sm">
-                                Buy It Now
-                            </a>
+                            <div class="flex items-center justify-end gap-2">
+                                @auth
+                                <form action="{{ route('cart.add') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="retailer_id" value="{{ $retailer->id }}">
+                                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full inline-block transition-colors shadow-sm">
+                                        Add to Cart
+                                    </button>
+                                </form>
+                                @else
+                                <a href="{{ route('login') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full inline-block transition-colors shadow-sm">
+                                    Add to Cart
+                                </a>
+                                @endauth
+                                <a href="{{ $retailer->pivot->product_url }}" target="_blank" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold py-2 px-4 rounded-full inline-block transition-colors text-xs">
+                                    Buy Direct
+                                </a>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

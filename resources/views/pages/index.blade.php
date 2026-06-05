@@ -30,7 +30,7 @@
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             @forelse($featuredProducts as $product)
-                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden group hover:shadow-lg transition-shadow">
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden group hover:shadow-lg transition-shadow relative">
                     <div class="h-48 bg-gray-50 flex items-center justify-center p-4">
                         <img src="{{ $product->image_path ? asset('storage/'.$product->image_path) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80' }}" alt="{{ $product->name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300">
                     </div>

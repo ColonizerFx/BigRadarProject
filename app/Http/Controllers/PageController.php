@@ -16,9 +16,31 @@ class PageController extends Controller
         return view('pages.index', compact('featuredProducts', 'marketplaceItems'));
     }
 
-    public function products()
+    public function products(Request $request)
     {
-        $products = Product::all();
+        $query = Product::with('retailers');
+
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('brand', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('category', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category', $request->category);
+        }
+
+        if ($request->has('retailer') && is_array($request->retailer)) {
+            $query->whereHas('retailers', function($q) use ($request) {
+                $q->whereIn('name', $request->retailer);
+            });
+        }
+
+        $products = $query->get();
         return view('pages.products', compact('products'));
     }
 
@@ -28,9 +50,23 @@ class PageController extends Controller
         return view('pages.product-details', compact('product'));
     }
 
-    public function marketplace()
+    public function marketplace(Request $request)
     {
-        $listings = \App\Models\MarketplaceListing::where('status', 'Active')->get();
+        $query = \App\Models\MarketplaceListing::where('status', 'Active');
+
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category', $request->category);
+        }
+
+        if ($request->has('condition') && is_array($request->condition)) {
+            $query->whereIn('condition', $request->condition);
+        }
+
+        if ($request->has('location') && is_array($request->location)) {
+            $query->whereIn('location', $request->location);
+        }
+
+        $listings = $query->latest()->get();
         return view('pages.marketplace', compact('listings'));
     }
 

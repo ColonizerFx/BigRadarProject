@@ -30,19 +30,22 @@ class DatabaseSeeder extends Seeder
         $tmt = Retailer::create([
             'name' => 'TMT',
             'website_url' => 'https://tmt.my',
-            'logo_path' => null
+            'logo_path' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/200px-NASA_logo.svg.png', // Dummy logo
+            'location' => 'Mid Valley Megamall, KL'
         ]);
         
         $allit = Retailer::create([
             'name' => 'All IT Hypermarket',
             'website_url' => 'https://www.allithypermarket.com.my',
-            'logo_path' => null
+            'logo_path' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png', // Dummy logo
+            'location' => 'Plaza Low Yat, KL'
         ]);
 
         $harvey = Retailer::create([
             'name' => 'Harvey Norman',
             'website_url' => 'https://www.harveynorman.com.my',
-            'logo_path' => null
+            'logo_path' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Burger_King_1994_logo.svg/200px-Burger_King_1994_logo.svg.png', // Dummy logo
+            'location' => 'Pavilion Bukit Jalil, KL'
         ]);
 
         // 3. Create Products (PC Parts)
