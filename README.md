@@ -1,59 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proposal: BigRadar Mobile Store Web Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Group Members
+| Name | Matric No |
+|---|---|
+| [MEMBER 1 NAME] | [MEMBER 1 MATRIC NO] |
+| [MEMBER 2 NAME] | [MEMBER 2 MATRIC NO] |
+| [MEMBER 3 NAME] | [MEMBER 3 MATRIC NO] |
 
-## About Laravel
+## 2. Title of the project
+**BigRadar Mobile Store**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 3. Introduction of the proposed web application
+BigRadar Mobile Store is a comprehensive e-commerce web application designed to facilitate the online browsing and purchasing of mobile devices and accessories. Leveraging the robust Laravel framework, it implements a Model-View-Controller (MVC) architecture to ensure scalability, security, and maintainability. The application features an intuitive user interface for customers to explore products, read blog posts, and contact support, while providing administrators with a secure backend to manage product inventories via full CRUD operations.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 4. The objective of the proposed web application
+- To provide a seamless and visually appealing online shopping experience for mobile devices.
+- To implement standard web application architectural patterns (MVC) using PHP and Laravel.
+- To offer an easy-to-use administrative interface for managing the product catalog (Create, Read, Update, Delete).
+- To secure administrative features using robust user authentication mechanisms.
+- To demonstrate proficiency in modern web development technologies including Blade templating, Eloquent ORM, and database migrations.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 5. Features and functionalities of the proposed web application
+1. **Product Catalog**: Visitors can browse featured products and view detailed product specifications.
+2. **Dynamic Content Pages**: Includes static but dynamic-ready pages like About Us, Blog, Testimonials, and Terms.
+3. **Contact System**: A functional contact form allowing visitors to send inquiries.
+4. **Admin Authentication**: Secure login system to restrict access to management features.
+5. **Product Management (CRUD)**: Authorized administrators can add new products, edit existing product details, delete outdated products, and view the entire inventory list.
+6. **Responsive Design**: The user interface is fully responsive, ensuring optimal viewing across desktop and mobile devices.
 
-## Learning Laravel
+## 6. ERD for Database Tables with Relationship
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+```mermaid
+erDiagram
+    USERS ||--o{ PRODUCTS : manages
+    USERS {
+        bigint id PK
+        string name
+        string email
+        string password
+        timestamp email_verified_at
+    }
+    PRODUCTS {
+        bigint id PK
+        string name
+        text description
+        decimal price
+        decimal discount_price
+        string image_path
+        timestamp created_at
+        timestamp updated_at
+    }
+    CONTACT_MESSAGES {
+        bigint id PK
+        string name
+        string email
+        string subject
+        text message
+        timestamp created_at
+    }
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 7. Sequence Diagram
 
-## Laravel Sponsors
+```mermaid
+sequenceDiagram
+    actor Admin
+    participant System
+    participant Database
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    Admin->>System: 1. Request Login Page
+    System-->>Admin: 2. Return Login View
+    Admin->>System: 3. Submit Credentials
+    System->>Database: 4. Verify Credentials
+    Database-->>System: 5. Verification Result
+    System-->>Admin: 6. Redirect to Admin Dashboard
 
-### Premium Partners
+    Admin->>System: 7. Request to Add New Product
+    System-->>Admin: 8. Return Product Creation Form
+    Admin->>System: 9. Submit Product Details
+    System->>Database: 10. INSERT new Product Record
+    Database-->>System: 11. Success Confirmation
+    System-->>Admin: 12. Redirect to Products List with Success Message
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 8. References
+1. Laravel Official Documentation: [https://laravel.com/docs](https://laravel.com/docs)
+2. PHP Official Documentation: [https://www.php.net/docs.php](https://www.php.net/docs.php)
+3. Bootstrap Front-end Framework: [https://getbootstrap.com/](https://getbootstrap.com/)
