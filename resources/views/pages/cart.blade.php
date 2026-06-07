@@ -63,12 +63,11 @@
                         <span>RM {{ number_format($total, 2) }}</span>
                     </div>
                     
-                    <form action="{{ route('cart.checkout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full transition-colors">
+                    <div class="mt-6">
+                        <a href="{{ route('cart.checkout.view') }}" class="w-full block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors text-sm shadow-sm">
                             Proceed to Checkout
-                        </button>
-                    </form>
+                        </a>
+                    </div>
                     <p class="text-xs text-center text-gray-500 mt-4">Simulated checkout. Clicking this will process an order directly to your profile history.</p>
                 </div>
             </div>

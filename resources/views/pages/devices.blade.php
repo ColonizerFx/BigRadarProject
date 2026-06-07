@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Find your Parts - BigRadar')
+@section('title', 'Devices - BigRadar')
 
 @section('content')
 
@@ -11,14 +11,14 @@
         <nav class="text-sm text-gray-500 mb-4 animate-fade-in-up">
             <a href="{{ url('/') }}" class="hover:text-brand transition-colors">Home</a>
             <span class="mx-2">/</span>
-            <span class="text-gray-900 font-medium">Find your Parts</span>
+            <span class="text-gray-900 font-medium">Devices</span>
         </nav>
 
         {{-- Page Title --}}
-        <h1 class="text-[32px] font-bold text-gray-900 mb-6 tracking-tight animate-fade-in-up" style="font-family: 'Inter', sans-serif;">Find your Parts</h1>
+        <h1 class="text-[32px] font-bold text-gray-900 mb-6 tracking-tight animate-fade-in-up" style="font-family: 'Inter', sans-serif;">Devices</h1>
 
         {{-- Horizontal Filter Bar --}}
-        <form action="{{ url('/products') }}" method="GET" id="filter-form" class="animate-fade-in-up">
+        <form action="{{ url('/devices') }}" method="GET" id="devices-filter-form" class="animate-fade-in-up">
             @if(request('search'))
                 <input type="hidden" name="search" value="{{ request('search') }}">
             @endif
@@ -30,47 +30,32 @@
                     Filter
                 </button>
 
-                {{-- Category Dropdown --}}
-                <select name="category" onchange="document.getElementById('filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
-                    <option value="">Category</option>
-                    @foreach(['Graphics Card', 'Processor', 'Motherboard', 'Memory', 'Storage', 'Power Supply', 'PC Case', 'Monitor', 'Cooling & Fans'] as $cat)
+                {{-- Device Type Dropdown --}}
+                <select name="category" onchange="document.getElementById('devices-filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
+                    <option value="">All Devices</option>
+                    @foreach(['Apple Devices', 'Monitor', 'Laptop', 'Tablet', 'Smartphone', 'Watch'] as $cat)
                         <option value="{{ $cat }}" {{ request('category') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
                     @endforeach
                 </select>
 
                 {{-- Brand Dropdown --}}
-                <select name="brand" onchange="document.getElementById('filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
+                <select name="brand" onchange="document.getElementById('devices-filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
                     <option value="">Brands</option>
-                    @foreach(['NVIDIA', 'AMD', 'Intel', 'ASUS', 'MSI', 'Gigabyte', 'Apple', 'Corsair'] as $brand)
+                    @foreach(['Apple', 'Samsung', 'ASUS', 'Acer', 'Dell', 'LG', 'Sony'] as $brand)
                         <option value="{{ $brand }}" {{ request('brand') == $brand ? 'selected' : '' }}>{{ $brand }}</option>
                     @endforeach
                 </select>
 
-                {{-- Retailer Dropdown --}}
-                <select name="retailer[]" onchange="document.getElementById('filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
-                    <option value="">Retailer</option>
-                    @foreach(['TMT', 'All IT Hypermarket', 'Harvey Norman', 'Switch', 'Apple Store'] as $retailer)
-                        <option value="{{ $retailer }}" {{ in_array($retailer, request('retailer', [])) ? 'selected' : '' }}>{{ $retailer }}</option>
-                    @endforeach
-                </select>
-
-                {{-- Condition Dropdown --}}
-                <select name="condition" onchange="document.getElementById('filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
-                    <option value="">Condition</option>
-                    <option value="New" {{ request('condition') == 'New' ? 'selected' : '' }}>New</option>
-                    <option value="Refurbished" {{ request('condition') == 'Refurbished' ? 'selected' : '' }}>Refurbished</option>
-                </select>
-
                 {{-- Reset Link --}}
                 @if(request()->except('search'))
-                    <a href="{{ url('/products') }}" class="text-sm font-semibold text-red-500 hover:text-red-700 underline underline-offset-2 ml-2 transition-colors">Clear Filters</a>
+                    <a href="{{ url('/devices') }}" class="text-sm font-semibold text-red-500 hover:text-red-700 underline underline-offset-2 ml-2 transition-colors">Clear Filters</a>
                 @endif
 
                 {{-- Spacer --}}
                 <div class="flex-1"></div>
 
                 {{-- Sort Dropdown (right-aligned) --}}
-                <select name="sort" onchange="document.getElementById('filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
+                <select name="sort" onchange="document.getElementById('devices-filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
                     <option value="">Sort: Default</option>
                     <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Price: lowest first</option>
                     <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price: highest first</option>
@@ -109,7 +94,7 @@
 
                     {{-- Product Image --}}
                     <div class="h-44 bg-[#F9FAFB] flex items-center justify-center p-6 relative">
-                        <img src="{{ Str::startsWith($product->image_path, 'http') ? $product->image_path : ($product->image_path ? asset('storage/'.$product->image_path) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80') }}" alt="{{ $product->name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
+                        <img src="{{ Str::startsWith($product->image_path, 'http') ? $product->image_path : ($product->image_path ? asset('storage/'.$product->image_path) : 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80') }}" alt="{{ $product->name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
                     </div>
 
                     {{-- Product Info --}}
@@ -139,9 +124,9 @@
                 </div>
             @empty
                 <div class="col-span-full py-20 text-center bg-white rounded-lg shadow-sm">
-                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                    <h3 class="text-lg font-bold text-gray-900">No products found</h3>
-                    <p class="mt-2 text-gray-500 text-sm">Try adjusting your filters or search terms.</p>
+                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    <h3 class="text-lg font-bold text-gray-900">No devices found</h3>
+                    <p class="mt-2 text-gray-500 text-sm">Try adjusting your filters or check back later.</p>
                 </div>
             @endforelse
         </div>

@@ -58,6 +58,20 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Product removed from cart!');
     }
 
+    public function checkoutView()
+    {
+        $cart = session()->get('cart', []);
+        if(count($cart) == 0) return redirect()->route('cart.index')->with('error', 'Cart is empty');
+
+        $totalAmount = 0;
+        foreach($cart as $item) {
+            $totalAmount += $item['price'] * $item['quantity'];
+        }
+        $shipping = 10.00;
+        
+        return view('pages.checkout', compact('cart', 'totalAmount', 'shipping'));
+    }
+
     public function checkout(Request $request)
     {
         $cart = session()->get('cart', []);

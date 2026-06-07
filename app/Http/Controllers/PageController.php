@@ -16,6 +16,72 @@ class PageController extends Controller
         return view('pages.index', compact('featuredProducts', 'marketplaceItems'));
     }
 
+    public function devices(Request $request)
+    {
+        // Devices = consumer electronics (not PC components)
+        $deviceCategories = ['Apple Devices', 'Monitor', 'Laptop', 'Tablet', 'Smartphone', 'Watch'];
+        $query = Product::with('retailers')->whereIn('category', $deviceCategories);
+
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                  ->orWhere('brand', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category', $request->category);
+        }
+
+        if ($request->has('brand') && $request->brand != '') {
+            $query->where('brand', $request->brand);
+        }
+
+        if ($request->has('sort') && $request->sort == 'newest') {
+            $query->latest();
+        }
+
+        $products = $query->get();
+
+        if ($request->has('sort')) {
+            if ($request->sort == 'price_asc') {
+                $products = $products->sortBy(function($prod) {
+                    return $prod->retailers->min('pivot.price') ?? 999999;
+                });
+            } elseif ($request->sort == 'price_desc') {
+                $products = $products->sortByDesc(function($prod) {
+                    return $prod->retailers->min('pivot.price') ?? 0;
+                });
+            }
+        }
+        return view('pages.devices', compact('products'));
+    }
+
+    public function pcBuilder()
+    {
+        // Load all PC part categories grouped for the builder
+        $partCategories = [
+            'CPU'           => 'Processor',
+            'GPU'           => 'Graphics Card',
+            'Motherboard'   => 'Motherboard',
+            'RAM'           => 'Memory',
+            'Storage'       => 'Storage',
+            'Power Supply'  => 'Power Supply',
+            'PC Case'       => 'PC Case',
+            'Cooling'       => 'Cooling & Fans',
+        ];
+
+        $partsBySlot = [];
+        foreach ($partCategories as $slotLabel => $dbCategory) {
+            $partsBySlot[$slotLabel] = Product::with('retailers')
+                ->where('category', $dbCategory)
+                ->get();
+        }
+
+        return view('pages.pc-builder', compact('partsBySlot', 'partCategories'));
+    }
+
     public function products(Request $request)
     {
         $query = Product::with('retailers');
@@ -40,7 +106,31 @@ class PageController extends Controller
             });
         }
 
+        if ($request->has('brand') && $request->brand != '') {
+            $query->where('brand', $request->brand);
+        }
+
+        // We can optionally sort by price by joining the retailer pivot table,
+        // but since we get the min price per product, sorting by price directly 
+        // at the DB level is tricky without raw queries or complex subqueries.
+        // For simplicity, we'll sort the final collection if requested.
+        if ($request->has('sort') && $request->sort == 'newest') {
+            $query->latest();
+        }
+
         $products = $query->get();
+
+        if ($request->has('sort')) {
+            if ($request->sort == 'price_asc') {
+                $products = $products->sortBy(function($prod) {
+                    return $prod->retailers->min('pivot.price') ?? 999999;
+                });
+            } elseif ($request->sort == 'price_desc') {
+                $products = $products->sortByDesc(function($prod) {
+                    return $prod->retailers->min('pivot.price') ?? 0;
+                });
+            }
+        }
         return view('pages.products', compact('products'));
     }
 

@@ -14,6 +14,8 @@ class Retailer extends Model
         'website_url',
         'logo_path',
         'location',
+        'latitude',
+        'longitude',
     ];
 
     public function products()

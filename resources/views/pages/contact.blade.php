@@ -13,7 +13,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
             
             <!-- Contact Info -->
-            <div class="bg-blue-600 rounded-3xl p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="bg-blue-600 rounded-3xl p-10 text-white shadow-sm border border-gray-900 relative overflow-hidden">
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
                 
                 <h3 class="text-2xl font-bold mb-8 relative z-10">Contact Information</h3>
@@ -46,7 +46,7 @@
             </div>
 
             <!-- Contact Form -->
-            <div class="bg-white rounded-3xl p-10 shadow-xl border border-slate-100">
+            <div class="bg-white rounded-3xl p-10 shadow-sm border border-gray-900">
                 <h3 class="text-2xl font-bold text-slate-900 mb-8">Send us a message</h3>
                 
                 @if (session('success'))
