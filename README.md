@@ -451,16 +451,20 @@ The authentication system utilizes standard Laravel session-based auth. Role-bas
 All views in RigRadar are based on a main layout specified in Blade. This structure fetches shared assets: Google Fonts, Tailwind CSS via Vite, and interactive components. Child views extend the layout and inject their content into named sections ensuring a consistent header, navbar, and footer across all pages with no code duplication.
 
 ## 5.0 USER INTERFACE DESIGN
+
+The user interface of RigRadar was developed with a strong emphasis on a minimalist and clean UI design, ensuring that users can navigate the platform without feeling overwhelmed by technical clutter. Utilizing Tailwind CSS, the interface maintains a consistent, modern aesthetic that prioritizes readability, accessibility, and straightforward navigation.
+
 ### 5.1 Use of Media (20 marks)
-The RigRadar platform incorporates a mix of static and dynamic media:
-- **Dynamic Product Images:** Managed natively via Laravel Storage, uploaded food/component images provide buyers with a transparent, realistic view of the item.
-- **Categorization Badges:** Utilizing Tailwind classes, listings dynamically pull classification data to display stylized tags.
+
+**5.1.1 Find your Parts page**
+
+**Figure 5.1.1 (Find your Parts page):** Media is utilized strategically to support the purchasing process rather than distract from it. High-quality, uniformly sized product images are displayed in a structured grid format, allowing users to quickly identify hardware components. Discount tags (e.g., "3% OFF") are positioned prominently on the product cards, utilizing contrasting colors to immediately draw the user's eye to potential savings without disrupting the overall clean layout.
 
 ### 5.2 Design, Colour Scheme & Layout (20 marks)
-The user interface design of RigRadar relies on modern UI frameworks:
-- **Colour Palette:** Built around a sleek dark mode aesthetic with strong Brand accents (primary greens and blues) to symbolize high-performance technology. 
-- **Typography Choices:** The application imports Google Fonts `Inter` to give an elegant, highly legible feel for data-heavy component specifications.
-- **Grid Structure:** Built entirely on Tailwind CSS grid and flex systems, the platform utilizes a mobile-first responsive layout. Content hierarchy is cleanly segmented.
+
+**5.2.1 Hero Banner**
+
+**Figure 5.2.1 (Hero Banner):** The platform adopts a high-contrast yet friendly color scheme. A predominantly white and light-gray background minimizes visual noise, while a distinct primary blue is used for critical call-to-action (CTA) buttons, interactive elements, and branding. The Hero Banner utilizes a dark, immersive background image to create visual depth, paired with bold, white typography to ensure the main value proposition ("Complete Your Setup") is immediately legible. The layout leverages responsive CSS grids to ensure components align perfectly across different screen sizes.
 
 ### 5.3 Navigation & Links (10 marks)
 The navigation layout is controlled globally. It utilizes Laravel Blade directives (`@auth`, `@guest`) to dynamically change the UI according to the user's session state. Guest modes display simple call-to-action login buttons, while authenticated modes provide access to personalized dashboard controls.
