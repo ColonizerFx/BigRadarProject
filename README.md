@@ -529,23 +529,32 @@ The user interface of RigRadar was developed with a strong emphasis on a minimal
 
 | Test No. | Feature Tested | Test Input | Expected Result | Actual Result | Status |
 |---|---|---|---|---|---|
-| T-01 | User Registration | Valid details | Account created; redirected to Dashboard. | Account created smoothly. | PASS |
-| T-02 | Auth Login | Correct credentials | Application initializes session ID; safely logs user in. | Authenticated successfully. | PASS |
-| T-03 | Search Feed | Search string | System queries available items, matching string. | Items displayed correctly. | PASS |
-| T-04 | Image Upload | Valid Image File | Image stored in public storage; DB inserts path. | Image saved and rendered. | PASS |
-| T-05 | Mobile Responsiveness | Resizing browser | Grid layout stacks vertically using flex properties. | Elements wrap cleanly; functional. | PASS |
+| T-01 | User Registration | Valid registration details | User account is successfully created and redirected to the appropriate dashboard. | Account was created successfully and user was redirected to the dashboard. | PASS |
+| T-02 | User Authentication (Login) | Valid login credentials | System authenticates the user, initializes a secure session, and grants access to the dashboard. | User was authenticated successfully and granted access to the system. | PASS |
+| T-03 | Search Functionality | Valid search keyword | System retrieves and displays items matching the search criteria. | Relevant items were displayed correctly based on the search query. | PASS |
+| T-04 | Image Upload | Valid image file | Image is uploaded successfully, stored in the public directory, and its path is recorded in the database. | Image was uploaded, stored correctly, and displayed as expected. | PASS |
+| T-05 | Mobile Responsiveness | Browser resized to mobile dimensions | Layout adapts responsively, with components stacking appropriately for smaller screens. | Interface remained functional, and all elements were displayed correctly on mobile view. | PASS |
 
 ### 6.2 Deployment Verification
 The application has been engineered to support cloud deployment. The live environment connects seamlessly to a cloud-hosted MySQL database instance. Critical production parameters configured within the environment variable engine include `APP_ENV=production` and `DB_HOST` variables mapping to the production schema.
 
 ## 7.0 CHALLENGES AND SOLUTIONS
+
 ### 7.1 Technical Challenges
-- **Data Aggregation:** Merging data from separate official retail inventories and user marketplace listings into a unified view required careful data structuring. Resolved by creating distinct database schemas and utilizing Laravel's Eloquent relationships to neatly query them.
-- **Image Linking Errors:** In the early development phase, images were broken due to storage issues. Resolved by properly configuring and executing the `php artisan storage:link` command.
+
+1. **Data Aggregation:**
+   One of the main technical challenges was integrating data from official retail inventories and user-generated marketplace listings into a single, unified platform. This required careful database design to ensure data consistency and efficient retrieval. The issue was resolved by implementing separate database schemas and leveraging Laravel's Eloquent ORM relationships to manage and query related data effectively.
+
+2. **Image Storage and Linking Issues:**
+   During the initial development phase, uploaded images were not displayed correctly due to storage path configuration issues. This challenge was addressed by properly configuring Laravel's file storage system and executing the `php artisan storage:link` command to establish the required symbolic link between the storage and public directories.
 
 ### 7.2 Team & Time Constraints
-- **Accelerated Development Timeline:** The tight schedule was our main limitation. To manage this, we implemented an Agile approach, focusing on the ‘must have’ features (Authentication, CRUD, and Browsing) instead of secondary features.
-- **Managing Diverse Technical Skill Sets:** Our team consisted of members with varying levels of proficiency in Laravel and PHP development. We addressed this through pair programming and collaborative code reviews.
+
+1. **Accelerated Development Timeline:**
+   The limited development period was a significant constraint throughout the project. To ensure timely completion, the team adopted an Agile development approach and prioritized essential functionalities such as user authentication, CRUD operations, and product browsing, while postponing non-critical features for future enhancement.
+
+2. **Managing Diverse Technical Skill Sets:**
+   The team consisted of members with varying levels of experience in Laravel and PHP development. To overcome this challenge, collaborative practices such as pair programming, knowledge sharing sessions, and code reviews were implemented. These approaches improved team coordination, enhanced technical understanding, and ensured consistent progress throughout the project.
 
 ## 8.0 CONCLUSION
 ### 8.1 Summary of Achievements
