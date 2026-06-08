@@ -160,6 +160,12 @@ class PageController extends Controller
         return view('pages.marketplace', compact('listings'));
     }
 
+    public function marketplaceDetails($id)
+    {
+        $item = \App\Models\MarketplaceListing::with('user')->findOrFail($id);
+        return view('pages.marketplace-details', compact('item'));
+    }
+
     public function about()
     {
         return view('pages.about');
