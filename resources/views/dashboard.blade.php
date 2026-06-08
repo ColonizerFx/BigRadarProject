@@ -1,4 +1,4 @@
-﻿@extends('layouts.front')
+@extends('layouts.front')
 
 @section('title', 'My Dashboard - RigRadar')
 
