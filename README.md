@@ -1,4 +1,4 @@
-﻿# PROJECT PROPOSAL GUIDELINES 
+# PROJECT PROPOSAL GUIDELINES 
 ### BIIT 2305 
 ### PROPOSAL FOR PROJECT DEVELOPMENT 
 ### RigRadar: Centralized PC Component Locator & Marketplace 
@@ -339,7 +339,7 @@ sequenceDiagram
     actor IT as IT Support Staff
     participant Browser as Browser (Blade View)
     
-    box rgb(232, 244, 248) Laravel MVC Application
+    box rgba(128, 128, 128, 0.2) Laravel MVC Application
         participant Router as Router & Middleware
         participant Validator as LoanRequest<br/>(Form Validation)
         participant Controller as InventoryController
