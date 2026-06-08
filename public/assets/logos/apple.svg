@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <rect width="60" height="60" rx="12" fill="#000000"/>
+  <!-- Apple logo shape -->
+  <path d="M30 10 C26 10 23 12.5 21 15 C19 12 20 9 22 8 C18 8 14 11 13 16 C12 21 14 27 17 31 C19 35 21 38 24 38 C26 38 27 37 30 37 C33 37 34 38 36 38 C39 38 41 35 43 31 C45 28 46 25 46 22 C43 21 41 18 41 15 C41 12 43 10 45 10 C43 7 39 6 36 8 C34 9 32 10 30 10 Z"
+        fill="white" transform="translate(0, 2)"/>
+  <ellipse cx="30" cy="8" rx="4" ry="5" fill="white" transform="rotate(-20, 30, 8)"/>
+</svg>

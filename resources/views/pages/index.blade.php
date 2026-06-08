@@ -13,7 +13,7 @@
             
             <!-- Slide 1: Main PC Build Banner -->
             <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 bg-gray-900">
-                <img src="https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="PC Components" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+                <img src="{{ asset('assets/images/slider-image-1-1920x900.jpg') }}" alt="PC Components" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
                 <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
                 <div class="p-8 md:p-14 md:w-[60%] h-full relative z-10 flex flex-col justify-center">
                     <h2 class="text-4xl md:text-5xl font-black text-white mb-5 leading-tight tracking-tight">Build Your<br>Dream PC</h2>
@@ -27,7 +27,7 @@
 
             <!-- Slide 2: Laptops & MacBooks -->
             <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 bg-gray-900">
-                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Laptops and MacBooks" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+                <img src="{{ asset('assets/images/slider-image-2-1920x900.jpg') }}" alt="Laptops and MacBooks" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
                 <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
                 <div class="p-8 md:p-14 md:w-[60%] h-full relative z-10 flex flex-col justify-center">
                     <div class="inline-flex items-center gap-2 bg-white text-gray-900 text-xs font-black px-3 py-1.5 rounded-full mb-5 w-max">
@@ -43,7 +43,7 @@
 
             <!-- Slide 3: Smart Devices -->
             <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 bg-gray-900">
-                <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Desk Setup" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+                <img src="{{ asset('assets/images/slider-image-3-1920x900.jpg') }}" alt="Desk Setup" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
                 <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
                 <div class="p-8 md:p-14 md:w-[60%] h-full relative z-10 flex flex-col justify-center">
                     <h2 class="text-4xl md:text-5xl font-black text-white mb-5 leading-tight tracking-tight">Complete<br>Your Setup</h2>
@@ -91,7 +91,15 @@
                 @endphp
                 <div class="bg-white rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-300 shadow-md relative flex flex-col h-full border border-gray-100 hover:-translate-y-1">
                     <div class="h-44 bg-[#F9FAFB] flex items-center justify-center p-6 relative">
-                        <img src="{{ Str::startsWith($product->image_path, 'http') ? $product->image_path : ($product->image_path ? asset('storage/'.$product->image_path) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80') }}" alt="{{ $product->name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
+                        @php
+                            $imgSrc = match(true) {
+                                !$product->image_path => null,
+                                Str::startsWith($product->image_path, 'http') => $product->image_path,
+                                Str::startsWith($product->image_path, 'assets/') => asset($product->image_path),
+                                default => asset('storage/'.$product->image_path),
+                            };
+                        @endphp
+                        <img src="{{ $imgSrc }}" alt="{{ $product->name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
                     </div>
                     <div class="px-4 pb-4 pt-3 flex-1 flex flex-col">
                         <div class="text-xs text-gray-500 mb-1 font-medium">{{ $product->brand }}</div>
@@ -132,7 +140,15 @@
             @forelse($marketplaceItems as $item)
                 <div class="bg-white rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-300 shadow-md relative flex flex-col h-full border border-gray-200 hover:-translate-y-1">
                     <div class="h-44 bg-[#F9FAFB] flex items-center justify-center p-4 relative">
-                        <img src="{{ Str::startsWith($item->image_path, 'http') ? $item->image_path : ($item->image_path ? asset('storage/'.$item->image_path) : 'https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80') }}" alt="{{ $item->title }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
+                        @php
+                            $imgSrc = match(true) {
+                                !$item->image_path => null,
+                                Str::startsWith($item->image_path, 'http') => $item->image_path,
+                                Str::startsWith($item->image_path, 'assets/') => asset($item->image_path),
+                                default => asset('storage/'.$item->image_path),
+                            };
+                        @endphp
+                        <img src="{{ $imgSrc }}" alt="{{ $item->title }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
                         <div class="absolute top-2 left-2 bg-gray-900 text-white text-[10px] uppercase px-2 py-1 rounded font-bold shadow-sm">
                             {{ $item->condition }}
                         </div>

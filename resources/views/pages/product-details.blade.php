@@ -45,7 +45,15 @@
             
             {{-- Image --}}
             <div class="lg:w-2/5 bg-[#F9FAFB] rounded-lg p-8 flex items-center justify-center min-h-[380px] mb-6 lg:mb-0">
-                <img src="{{ Str::startsWith($product->image_path, 'http') ? $product->image_path : ($product->image_path ? asset('storage/'.$product->image_path) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') }}"
+                @php
+                    $detailImgSrc = match(true) {
+                        !$product->image_path => null,
+                        Str::startsWith($product->image_path, 'http') => $product->image_path,
+                        Str::startsWith($product->image_path, 'assets/') => asset($product->image_path),
+                        default => asset('storage/'.$product->image_path),
+                    };
+                @endphp
+                <img src="{{ $detailImgSrc }}"
                      alt="{{ $product->name }}"
                      class="object-contain w-full max-h-[340px] mix-blend-multiply">
             </div>
@@ -161,7 +169,18 @@
                     <div class="flex items-start justify-between">
                         <div class="flex items-center gap-3">
                             @if($retailer->logo_path)
-                                <img src="{{ Str::startsWith($retailer->logo_path, 'http') ? $retailer->logo_path : asset('storage/'.$retailer->logo_path) }}" alt="{{ $retailer->name }} logo" class="w-8 h-8 object-contain rounded-md border border-gray-100 bg-white p-0.5">
+                                @php
+                                    $logoSrc = match(true) {
+                                        Str::startsWith($retailer->logo_path, 'http') => $retailer->logo_path,
+                                        Str::startsWith($retailer->logo_path, 'assets/') => asset($retailer->logo_path),
+                                        default => asset('storage/'.$retailer->logo_path),
+                                    };
+                                @endphp
+                                <img src="{{ $logoSrc }}" alt="{{ $retailer->name }} logo" class="w-10 h-10 object-contain rounded-md border border-gray-100 bg-white p-1">
+                            @else
+                                <div class="w-10 h-10 rounded-md border border-gray-100 bg-gray-100 flex items-center justify-center">
+                                    <span class="text-xs font-bold text-gray-500">{{ substr($retailer->name, 0, 2) }}</span>
+                                </div>
                             @endif
                             <div>
                                 <div class="font-bold text-gray-900 text-[17px]">{{ $retailer->name }}</div>

@@ -83,10 +83,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav class="flex justify-center items-center space-x-10 overflow-x-auto no-scrollbar">
                 <a href="{{ url('/products') }}" class="nav-link text-[15px] font-bold whitespace-nowrap {{ request()->is('products*') ? 'nav-active text-gray-900' : 'text-gray-600' }}">Find your Parts</a>
+                <span class="h-4 w-px bg-gray-300"></span>
                 <a href="{{ url('/devices') }}" class="nav-link text-[15px] font-bold whitespace-nowrap {{ request()->is('devices*') ? 'nav-active text-gray-900' : 'text-gray-600' }}">Devices</a>
+                <span class="h-4 w-px bg-gray-300"></span>
                 <a href="{{ url('/pc-builder') }}" class="nav-link text-[15px] font-bold whitespace-nowrap {{ request()->is('pc-builder*') ? 'nav-active text-gray-900' : 'text-gray-600' }}">PC Builder</a>
+                <span class="h-4 w-px bg-gray-300"></span>
                 <a href="{{ url('/marketplace') }}" class="nav-link text-[15px] font-bold whitespace-nowrap {{ request()->is('marketplace*') ? 'nav-active text-gray-900' : 'text-gray-600' }}">User Marketplace</a>
+                <span class="h-4 w-px bg-gray-300"></span>
                 <a href="{{ url('/about') }}" class="nav-link text-[15px] font-bold whitespace-nowrap text-gray-600">Our Stores</a>
+                <span class="h-4 w-px bg-gray-300"></span>
                 <a href="{{ url('/contact') }}" class="nav-link text-[15px] font-bold whitespace-nowrap text-gray-600">Contact Us</a>
             </nav>
         </div>

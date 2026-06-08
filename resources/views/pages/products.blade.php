@@ -109,7 +109,15 @@
 
                     {{-- Product Image --}}
                     <div class="h-44 bg-[#F9FAFB] flex items-center justify-center p-6 relative">
-                        <img src="{{ Str::startsWith($product->image_path, 'http') ? $product->image_path : ($product->image_path ? asset('storage/'.$product->image_path) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80') }}" alt="{{ $product->name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
+                        @php
+                            $imgSrc = match(true) {
+                                !$product->image_path => null,
+                                Str::startsWith($product->image_path, 'http') => $product->image_path,
+                                Str::startsWith($product->image_path, 'assets/') => asset($product->image_path),
+                                default => asset('storage/'.$product->image_path),
+                            };
+                        @endphp
+                        <img src="{{ $imgSrc ?? asset('assets/images/placeholder-part.png') }}" alt="{{ $product->name }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
                     </div>
 
                     {{-- Product Info --}}

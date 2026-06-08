@@ -90,7 +90,15 @@
 
                 {{-- Product Image --}}
                 <div class="h-52 bg-white flex items-center justify-center p-6">
-                    <img src="{{ $item->image_path ? asset('storage/'.$item->image_path) : 'https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80' }}" alt="{{ $item->title }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
+                    @php
+                        $imgSrc = match(true) {
+                            !$item->image_path => null,
+                            Str::startsWith($item->image_path, 'http') => $item->image_path,
+                            Str::startsWith($item->image_path, 'assets/') => asset($item->image_path),
+                            default => asset('storage/'.$item->image_path),
+                        };
+                    @endphp
+                    <img src="{{ $imgSrc ?? asset('assets/images/placeholder-part.png') }}" alt="{{ $item->title }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
                 </div>
 
                 {{-- Item Info --}}
