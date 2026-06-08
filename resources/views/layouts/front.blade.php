@@ -62,9 +62,14 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                     </a>
                 @else
-                    <a href="{{ route('login') }}" class="hover:text-brand transition-colors" title="Account">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                    </a>
+                    <div class="flex items-center gap-2">
+                        <a href="{{ route('login') }}" class="text-sm font-semibold text-gray-700 hover:text-brand transition-colors px-3 py-1.5 rounded-lg hover:bg-gray-100">
+                            Sign In
+                        </a>
+                        <a href="{{ route('register') }}" class="text-sm font-semibold text-white bg-brand hover:bg-brand-dark transition-colors px-3 py-1.5 rounded-lg">
+                            Register
+                        </a>
+                    </div>
                 @endauth
 
                 @php $cartCount = count(session()->get('cart', [])); @endphp
