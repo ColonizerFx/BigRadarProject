@@ -139,7 +139,7 @@
                     </div>
                     <div class="px-4 pb-4 pt-3 flex-1 flex flex-col">
                         <h4 class="font-semibold text-gray-900 text-[15px] leading-snug line-clamp-2 mb-2">
-                            <a href="{{ route('marketplace.details', $item->id) }}"><span class="absolute inset-0"></span>{{ $item->title }}</a>
+                            <a href="#"><span class="absolute inset-0"></span>{{ $item->title }}</a>
                         </h4>
                         
                         <div class="mt-auto">

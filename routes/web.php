@@ -12,7 +12,6 @@ Route::get('/products/{id}', [App\Http\Controllers\PageController::class, 'produ
 Route::get('/devices', [PageController::class, 'devices'])->name('devices');
 Route::get('/pc-builder', [PageController::class, 'pcBuilder'])->name('pc-builder');
 Route::get('/marketplace', [App\Http\Controllers\PageController::class, 'marketplace'])->name('marketplace.index');
-Route::get('/marketplace/{id}', [App\Http\Controllers\PageController::class, 'marketplaceDetails'])->name('marketplace.details')->where('id', '[0-9]+');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'storeContact'])->name('contact.store');
