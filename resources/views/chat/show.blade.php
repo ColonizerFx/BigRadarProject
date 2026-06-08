@@ -22,6 +22,41 @@
             </div>
         </div>
 
+        {{-- Listing Item Banner --}}
+        @if($conversation->marketplaceListing)
+            @php
+                $listing = $conversation->marketplaceListing;
+                $imgSrc = match(true) {
+                    !$listing->image_path => null,
+                    Str::startsWith($listing->image_path, 'http') => $listing->image_path,
+                    Str::startsWith($listing->image_path, 'assets/') => asset($listing->image_path),
+                    default => asset('storage/' . $listing->image_path),
+                };
+            @endphp
+            <div class="bg-gray-50 border-b border-gray-200 px-4 py-3">
+                <div class="flex items-center gap-3 border border-gray-300 rounded-xl px-3 py-2.5 bg-white shadow-sm">
+                    {{-- Thumbnail --}}
+                    <div class="w-14 h-14 rounded-lg border border-gray-200 overflow-hidden flex-shrink-0 bg-gray-100 flex items-center justify-center">
+                        @if($imgSrc)
+                            <img src="{{ $imgSrc }}" alt="{{ $listing->title }}" class="w-full h-full object-cover">
+                        @else
+                            <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        @endif
+                    </div>
+                    {{-- Info --}}
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-gray-900 truncate">{{ $listing->title }}</p>
+                        <p class="text-sm font-bold text-gray-800">RM {{ number_format($listing->price, 2) }}</p>
+                    </div>
+                    {{-- Actions --}}
+                    <div class="flex items-center gap-2 flex-shrink-0">
+                        <a href="{{ route('marketplace.details', $listing->id) }}" class="text-xs font-semibold text-gray-700 border border-gray-300 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors whitespace-nowrap">View Listing</a>
+                        <button type="button" onclick="document.querySelector('[name=message]').value='Hi, I\'m interested in buying {{ addslashes($listing->title) }}. Is it still available?'; document.querySelector('[name=message]').focus();" class="text-xs font-semibold text-white bg-brand px-3 py-1.5 rounded-lg hover:bg-brand-dark transition-colors whitespace-nowrap">Make Offer</button>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="flex-1 bg-slate-50 p-6 overflow-y-auto flex flex-col space-y-4">
             @foreach($conversation->messages as $msg)
                 <div class="flex {{ $msg->sender_id == Auth::id() ? 'justify-end' : 'justify-start' }} animate-fade-in-up">

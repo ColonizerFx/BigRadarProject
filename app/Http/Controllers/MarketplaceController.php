@@ -22,7 +22,7 @@ class MarketplaceController extends Controller
             'price' => 'required|numeric|min:0',
             'location' => 'required|string',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,avif|max:2048'
         ]);
 
         $imagePath = null;
@@ -62,7 +62,7 @@ class MarketplaceController extends Controller
             'price' => 'required|numeric|min:0',
             'location' => 'required|string',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,avif|max:2048'
         ]);
 
         if ($request->hasFile('image')) {

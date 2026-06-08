@@ -12,6 +12,12 @@
         <span class="text-gray-900 font-medium">User Marketplace (C2C)</span>
     </nav>
 
+    @if(session('success'))
+        <div class="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl mb-6 animate-fade-in-up">
+            {{ session('success') }}
+        </div>
+    @endif
+
     {{-- Page Title + Sell Button --}}
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 animate-fade-in-up">
         <h1 class="text-3xl font-black text-gray-900">User Marketplace</h1>

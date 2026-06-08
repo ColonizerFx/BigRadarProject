@@ -9,6 +9,16 @@
         
         <form action="{{ route('marketplace.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            @if($errors->any())
+                <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl mb-6">
+                    <ul class="list-disc pl-5">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             
             <div class="grid grid-cols-1 gap-6 mb-6">
                 <div>

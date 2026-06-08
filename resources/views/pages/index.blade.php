@@ -4,69 +4,69 @@
 
 @section('content')
 
-<!-- Hero Carousel Section (White Background) -->
+<!-- Hero Carousel Section -->
 <div class="bg-white py-6 w-full relative group">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        
+
         <!-- Slider Container -->
-        <div id="hero-slider" class="relative rounded-[16px] overflow-hidden shadow-lg h-[400px]">
-            
+        <div id="hero-slider" class="relative rounded-2xl overflow-hidden h-[460px] shadow-2xl">
+
             <!-- Slide 1: Main PC Build Banner -->
-            <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 bg-gray-900">
-                <img src="{{ asset('assets/images/slider-image-1-1920x900.jpg') }}" alt="PC Components" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
-                <div class="p-8 md:p-14 md:w-[60%] h-full relative z-10 flex flex-col justify-center">
-                    <h2 class="text-4xl md:text-5xl font-black text-white mb-5 leading-tight tracking-tight">Build Your<br>Dream PC</h2>
-                    <p class="text-gray-300 text-[15px] mb-8 max-w-sm">Compare prices from top Malaysian retailers instantly. Find the best deals on GPUs, CPUs, and consumer devices.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="{{ url('/products') }}" class="inline-block bg-white text-gray-900 font-bold px-6 py-2.5 rounded-lg hover:bg-gray-100 transition-colors shadow-sm text-sm">Find your Parts &rarr;</a>
-                        <a href="{{ url('/pc-builder') }}" class="inline-block bg-brand hover:bg-brand-dark text-white font-bold px-6 py-2.5 rounded-lg transition-colors text-sm border border-transparent shadow-sm">🔧 PC Builder</a>
+            <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
+                <img src="https://assetsio.gnwcdn.com/How-to-build-a-gaming-PC-header.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="PC Components" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+                <div class="p-10 md:p-16 md:w-[55%] h-full relative z-10 flex flex-col justify-center">
+                    <h2 class="text-4xl md:text-5xl font-black text-white mb-4 leading-tight tracking-tight drop-shadow-lg">Build Your<br>Dream PC</h2>
+                    <p class="text-white/75 text-[15px] mb-8 max-w-sm leading-relaxed">Compare prices from top Malaysian retailers instantly. Find the best deals on GPUs, CPUs, and consumer devices.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="{{ url('/products') }}" class="inline-flex items-center gap-1.5 bg-white text-gray-900 font-bold px-6 py-2.5 rounded-xl hover:bg-gray-50 transition-all shadow-md text-sm">Find your Parts &rarr;</a>
+                        <a href="{{ url('/pc-builder') }}" class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white font-bold px-6 py-2.5 rounded-xl transition-all text-sm shadow-md">🔧 PC Builder</a>
                     </div>
                 </div>
             </div>
 
             <!-- Slide 2: Laptops & MacBooks -->
-            <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 bg-gray-900">
-                <img src="{{ asset('assets/images/slider-image-2-1920x900.jpg') }}" alt="Laptops and MacBooks" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
-                <div class="p-8 md:p-14 md:w-[60%] h-full relative z-10 flex flex-col justify-center">
-                    <div class="inline-flex items-center gap-2 bg-white text-gray-900 text-xs font-black px-3 py-1.5 rounded-full mb-5 w-max">
-                        BACK TO SCHOOL
+            <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0">
+                <img src="https://asia.dynabook.com/assets_new/images/portege-x30l-g-slide-1.png" alt="Laptops and MacBooks" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+                <div class="p-10 md:p-16 md:w-[55%] h-full relative z-10 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-5 w-max tracking-widest uppercase">
+                        Back To School
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-black text-white mb-5 leading-tight tracking-tight">Premium<br>Laptops</h2>
-                    <p class="text-gray-300 text-[15px] mb-8 font-semibold max-w-sm">From MacBooks to high-performance gaming rigs. Find the perfect mobile workstation.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="{{ url('/devices') }}" class="inline-block bg-brand text-white font-bold px-8 py-3 rounded-lg hover:bg-brand-dark transition-colors shadow-sm text-sm">Shop Laptops</a>
+                    <h2 class="text-4xl md:text-5xl font-black text-white mb-4 leading-tight tracking-tight drop-shadow-lg">Premium<br>Laptops</h2>
+                    <p class="text-white/75 text-[15px] mb-8 max-w-sm leading-relaxed">From MacBooks to high-performance gaming rigs. Find the perfect mobile workstation.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="{{ url('/devices') }}" class="inline-flex items-center bg-brand text-white font-bold px-8 py-2.5 rounded-xl hover:bg-brand-dark transition-all shadow-md text-sm">Shop Laptops</a>
                     </div>
                 </div>
             </div>
 
             <!-- Slide 3: Smart Devices -->
-            <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 bg-gray-900">
-                <img src="{{ asset('assets/images/slider-image-3-1920x900.jpg') }}" alt="Desk Setup" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
-                <div class="p-8 md:p-14 md:w-[60%] h-full relative z-10 flex flex-col justify-center">
-                    <h2 class="text-4xl md:text-5xl font-black text-white mb-5 leading-tight tracking-tight">Complete<br>Your Setup</h2>
-                    <p class="text-gray-300 text-[15px] mb-8 font-semibold max-w-sm">Discover top-rated monitors, tablets, and smartwatches at unbeatable prices across Malaysia.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="{{ url('/devices') }}" class="inline-block bg-white text-gray-900 font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors shadow-sm text-sm">Explore Devices</a>
+            <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0">
+                <img src="{{ asset('assets/images/slider-image-3-1920x900.jpg') }}" alt="Desk Setup" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+                <div class="p-10 md:p-16 md:w-[55%] h-full relative z-10 flex flex-col justify-center">
+                    <h2 class="text-4xl md:text-5xl font-black text-white mb-4 leading-tight tracking-tight drop-shadow-lg">Complete<br>Your Setup</h2>
+                    <p class="text-white/75 text-[15px] mb-8 max-w-sm leading-relaxed">Discover top-rated monitors, tablets, and smartwatches at unbeatable prices across Malaysia.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="{{ url('/devices') }}" class="inline-flex items-center bg-white text-gray-900 font-bold px-8 py-2.5 rounded-xl hover:bg-gray-50 transition-all shadow-md text-sm">Explore Devices</a>
                     </div>
                 </div>
             </div>
 
             <!-- Controls -->
-            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all z-20 shadow-lg">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 backdrop-blur-sm border border-white/15 text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all z-20 shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
             </button>
-            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all z-20 shadow-lg">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/40 backdrop-blur-sm border border-white/15 text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all z-20 shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
             </button>
 
-            <!-- Indicators -->
-            <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                <button onclick="goToSlide(0)" class="slide-dot w-2 h-2 rounded-full bg-white opacity-100 transition-all shadow-sm"></button>
-                <button onclick="goToSlide(1)" class="slide-dot w-2 h-2 rounded-full bg-white opacity-40 hover:opacity-100 transition-all shadow-sm"></button>
-                <button onclick="goToSlide(2)" class="slide-dot w-2 h-2 rounded-full bg-white opacity-40 hover:opacity-100 transition-all shadow-sm"></button>
+            <!-- Indicators (pill style) -->
+            <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20 items-center">
+                <button onclick="goToSlide(0)" class="slide-dot h-2 rounded-full bg-white transition-all duration-300 w-6 opacity-100 shadow"></button>
+                <button onclick="goToSlide(1)" class="slide-dot h-2 rounded-full bg-white transition-all duration-300 w-2 opacity-50 hover:opacity-80 shadow"></button>
+                <button onclick="goToSlide(2)" class="slide-dot h-2 rounded-full bg-white transition-all duration-300 w-2 opacity-50 hover:opacity-80 shadow"></button>
             </div>
         </div>
 
@@ -221,14 +221,14 @@
         slides.forEach((slide, i) => {
             slide.classList.remove('opacity-100');
             slide.classList.add('opacity-0');
-            dots[i].classList.remove('opacity-100');
-            dots[i].classList.add('opacity-40');
-            
-            if(i === index) {
+            dots[i].classList.remove('opacity-100', 'w-6');
+            dots[i].classList.add('opacity-50', 'w-2');
+
+            if (i === index) {
                 slide.classList.remove('opacity-0');
                 slide.classList.add('opacity-100');
-                dots[i].classList.remove('opacity-40');
-                dots[i].classList.add('opacity-100');
+                dots[i].classList.remove('opacity-50', 'w-2');
+                dots[i].classList.add('opacity-100', 'w-6');
             }
         });
     }
