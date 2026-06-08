@@ -98,13 +98,15 @@
                             default => asset('storage/'.$item->image_path),
                         };
                     @endphp
-                    <img src="{{ $imgSrc ?? asset('assets/images/placeholder-part.png') }}" alt="{{ $item->title }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
+                    <a href="{{ route('marketplace.details', $item->id) }}" class="h-full flex items-center justify-center">
+                        <img src="{{ $imgSrc ?? asset('assets/images/placeholder-part.png') }}" alt="{{ $item->title }}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-multiply">
+                    </a>
                 </div>
 
                 {{-- Item Info --}}
                 <div class="px-5 pb-5 pt-3">
                     <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-1 group-hover:text-brand transition-colors min-h-[2.5rem]">
-                        {{ $item->title }}
+                        <a href="{{ route('marketplace.details', $item->id) }}"><span class="absolute inset-0"></span>{{ $item->title }}</a>
                     </h4>
                     <div class="text-xs text-gray-400 mb-3">
                         by {{ $item->user->name }} · {{ $item->location }}
