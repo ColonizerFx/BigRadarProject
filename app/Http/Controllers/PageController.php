@@ -19,7 +19,7 @@ class PageController extends Controller
     public function devices(Request $request)
     {
         // Devices = consumer electronics (not PC components)
-        $deviceCategories = ['Apple Devices', 'Monitor', 'Laptop', 'Tablet', 'Smartphone', 'Watch'];
+        $deviceCategories = ['Apple Devices', 'Windows Laptop', 'Monitor', 'Laptop', 'Tablet', 'Smartphone', 'Watch'];
         $query = Product::with('retailers')->whereIn('category', $deviceCategories);
 
         if ($request->has('search') && $request->search != '') {

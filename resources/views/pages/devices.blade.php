@@ -33,7 +33,7 @@
                 {{-- Device Type Dropdown --}}
                 <select name="category" onchange="document.getElementById('devices-filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
                     <option value="">All Devices</option>
-                    @foreach(['Apple Devices', 'Monitor', 'Laptop', 'Tablet', 'Smartphone', 'Watch'] as $cat)
+                    @foreach(['Apple Devices', 'Windows Laptop', 'Monitor', 'Laptop', 'Tablet', 'Smartphone', 'Watch'] as $cat)
                         <option value="{{ $cat }}" {{ request('category') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
                     @endforeach
                 </select>

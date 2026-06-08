@@ -345,6 +345,56 @@ class ProductSeeder extends Seeder
                 'prices'      => ['TMT' => 799.00, 'Harvey Norman' => 849.00, 'All IT Hypermarket' => 779.00],
             ],
 
+            // ─── Windows Laptops ─────────────────────────────────────────────────
+            [
+                'name'        => 'Microsoft Surface Laptop 7 15" (Snapdragon X2 Elite)',
+                'brand'       => 'Microsoft',
+                'category'    => 'Windows Laptop',
+                'description' => 'Microsoft Surface Laptop 7 15-inch with Snapdragon X2 Elite. Copilot+ PC with AI capabilities, up to 22 hours battery life, stunning PixelSense display.',
+                'image_path'  => 'assets/parts-images/25bb78a3-9fbf-4a10-a809-bf0627045eb9.webp',
+                'prices'      => ['Harvey Norman' => 7499.00, 'All IT Hypermarket' => 7299.00],
+            ],
+            [
+                'name'        => 'HP Victus 15 Gaming Laptop (Intel Core i5)',
+                'brand'       => 'HP',
+                'category'    => 'Windows Laptop',
+                'description' => 'HP Victus 15 gaming laptop powered by Intel Core i5 13th Gen with NVIDIA GeForce RTX discrete graphics. 144Hz FHD display, Xbox Game Pass ready.',
+                'image_path'  => 'assets/parts-images/302c3f32-6eda-42a4-8ceb-132669c257d0.webp',
+                'prices'      => ['TMT' => 3399.00, 'All IT Hypermarket' => 3299.00, 'Harvey Norman' => 3499.00],
+            ],
+            [
+                'name'        => 'HP 14s Laptop (Intel)',
+                'brand'       => 'HP',
+                'category'    => 'Windows Laptop',
+                'description' => 'HP 14s lightweight laptop with Intel processor. 14-inch FHD display, slim and portable design. Ideal for students and everyday productivity.',
+                'image_path'  => 'assets/parts-images/3bd638b3-4542-4115-8e43-34faa18a2382.webp',
+                'prices'      => ['TMT' => 1949.00, 'All IT Hypermarket' => 1899.00, 'Harvey Norman' => 1999.00],
+            ],
+            [
+                'name'        => 'Lenovo IdeaPad Slim 3 15" (Frost Blue)',
+                'brand'       => 'Lenovo',
+                'category'    => 'Windows Laptop',
+                'description' => 'Lenovo IdeaPad Slim 3 15-inch in Frost Blue. Everyday performance with a full HD display, long battery life, and lightweight build for students.',
+                'image_path'  => 'assets/parts-images/449185b2-c8c5-4dbb-9d85-0e1ac7d7d57a.webp',
+                'prices'      => ['TMT' => 2199.00, 'All IT Hypermarket' => 2149.00, 'Harvey Norman' => 2299.00],
+            ],
+            [
+                'name'        => 'MSI Thin 15 Gaming Laptop (Ryzen 5 + RTX 144Hz)',
+                'brand'       => 'MSI',
+                'category'    => 'Windows Laptop',
+                'description' => 'MSI Thin 15 gaming laptop with AMD Ryzen 5 and NVIDIA GeForce RTX graphics. 144Hz FHD IPS display, teal RGB backlit keyboard.',
+                'image_path'  => 'assets/parts-images/6d5b875f-3b2c-41ef-845f-525f9063c7e0.webp',
+                'prices'      => ['TMT' => 3799.00, 'All IT Hypermarket' => 3699.00, 'Harvey Norman' => 3999.00],
+            ],
+            [
+                'name'        => 'Acer Predator Helios 16 OLED (RTX + AI)',
+                'brand'       => 'Acer',
+                'category'    => 'Windows Laptop',
+                'description' => 'Acer Predator Helios 16 OLED gaming laptop with NVIDIA GeForce RTX and AI-powered performance. Brilliant OLED display, VR-ready, award-winning design.',
+                'image_path'  => 'assets/parts-images/ede7f9e4-1569-4fd4-905a-bdc12289ab4d.webp',
+                'prices'      => ['TMT' => 7899.00, 'All IT Hypermarket' => 7799.00, 'Harvey Norman' => 7999.00],
+            ],
+
             // ─── Apple Devices (Devices page) ────────────────────────────────────
             [
                 'name'        => 'Apple MacBook Pro 14-inch (M3 Pro) Space Black',
