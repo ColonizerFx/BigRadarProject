@@ -336,51 +336,52 @@ erDiagram
 
 ```mermaid
 sequenceDiagram
-    actor User
-    participant View as Search.blade.php<br/>(View)
-    participant Controller as SearchController<br/>(Controller)
-    participant Validator as Validator<br/>(Laravel Request)
-    participant RetailModel as RetailComponent<br/>(Model)
-    participant MarketModel as MarketListing<br/>(Model)
+    actor IT as IT Support Staff
+    participant Browser as Browser (Blade View)
+    
+    box rgb(232, 244, 248) Laravel MVC Application
+        participant Router as Router & Middleware
+        participant Validator as LoanRequest<br/>(Form Validation)
+        participant Controller as InventoryController
+        participant Product as Product Model
+        participant Loan as InventoryLoan Model
+    end
+    
     participant DB as MySQL Database
 
-    User->>View: 1 Enter query "RTX 4060" & Submit
-    View->>Controller: 2 GET /search?q=RTX+4060
+    IT->>Browser: 1 Fills checkout form (Product SKU, Student Matric No) & Submits
+    Browser->>Router: 2 POST /inventory/checkout
     
-    Note over Controller,Validator: 1. Security & Validation
-    Controller->>Validator: 3 validate(['q' => 'required|string|max:100'])
-    Validator->>Validator: 4 Sanitize inputs (Prevent SQLi/XSS)
-    alt Validation Failed
-        Validator-->>Controller: 5 Return Error Messages
-        Controller-->>View: 6 Redirect back with errors
-        View-->>User: 7 Display "Invalid Search Term"
-    else Validation Passed
-        Validator-->>Controller: 8 Validated Data
-    end
-
-    Note over Controller,DB: 2. Database Queries
-    par Execute Queries Concurrently
-        Controller->>RetailModel: 9 where('name', 'LIKE', '%RTX 4060%')
-        RetailModel->>DB: 10 SELECT * FROM retail_components
-        DB-->>RetailModel: 11 Retail Results
-        RetailModel-->>Controller: 12 Retail Collection
-    and
-        Controller->>MarketModel: 13 where(['status => active', is_shariah_compliant => true])
-        MarketModel->>DB: 14 SELECT * FROM marketplace_listings
-        DB-->>MarketModel: 15 P2P Results
-        MarketModel-->>Controller: 16 P2P Collection
-    end
-
-    Note over Controller,View: 3. Data Processing
-    Controller->>Controller: 17 Merge Collections
-    alt No Results Found
-        Controller-->>View: 18 Return empty state view
-        View-->>User: 19 Display "No components found."
-    else Results Found
-        Controller->>Controller: 20 Remove identical P2P duplicate listings
-        Controller->>Controller: 21 Sort Collection by 'price' (ASC)
-        Controller-->>View: 22 Return unified $results to Blade
-        View-->>User: 23 Render interactive price comparison dashboard
+    Note right of Router: Middleware checks if user<br/>is authenticated & authorized
+    
+    alt [Unauthorized]
+        Router-->>Browser: 3 Redirect to Login / 403 Forbidden
+    else [Authorized]
+        Router->>Validator: 4 Trigger Validation Rules
+        
+        Note right of Validator: Validates student exists,<br/>product exists, and<br/>quantity > 0
+        
+        alt [Validation Fails]
+            Validator-->>Browser: 5 Redirect back with $errors
+            Browser-->>IT: 6 Display Error Alerts (e.g., "Out of Stock")
+        else [Validation Passes]
+            Validator->>Controller: 7 Proceed to Controller method
+            
+            Controller->>DB: 8 DB::beginTransaction()
+            
+            Controller->>Product: 9 decrement('available_quantity')
+            Product->>DB: 10 UPDATE products SET available_quantity = ...
+            DB-->>Product: 11 Success
+            
+            Controller->>Loan: 12 create(loan_details)
+            Loan->>DB: 13 INSERT INTO inventory_loans
+            Loan-->>Controller: 14 Returns new Loan instance
+            
+            Controller->>DB: 15 DB::commit()
+            
+            Controller-->>Browser: 16 Redirect to Dashboard with Session Flash('success')
+            Browser-->>IT: 17 Display Success Message & Updated Inventory List
+        end
     end
 ```
 
