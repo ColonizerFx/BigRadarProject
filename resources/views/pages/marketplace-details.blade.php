@@ -27,7 +27,15 @@
                 <div class="absolute top-4 left-4 z-10 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-md shadow-sm">
                     {{ $item->condition }}
                 </div>
-                <img src="{{ Str::startsWith($item->image_path, 'http') ? $item->image_path : ($item->image_path ? asset('storage/'.$item->image_path) : 'https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') }}"
+                @php
+                    $imgSrc = match(true) {
+                        !$item->image_path => null,
+                        Str::startsWith($item->image_path, 'http') => $item->image_path,
+                        Str::startsWith($item->image_path, 'assets/') => asset($item->image_path),
+                        default => asset('storage/'.$item->image_path),
+                    };
+                @endphp
+                <img src="{{ $imgSrc ?? asset('assets/images/placeholder-part.png') }}"
                      alt="{{ $item->title }}"
                      class="object-contain w-full max-h-[340px] mix-blend-multiply">
             </div>
