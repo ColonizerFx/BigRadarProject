@@ -431,15 +431,15 @@ flowchart TD
 
 ## 4.0 TECHNICAL IMPLEMENTATION
 ### 4.1 Models & Database Migrations
-The platform is structured around several primary Eloquent models: `User`, `MarketplaceListing`, `RetailComponent`, and `Category`. The `User` model serves as the base, extending Authenticatable. It is designed to store important profile details and manages relationships to the `MarketplaceListing` items. 
-
-The `MarketplaceListing` model acts as the central hub for P2P inventory. It monitors essential item information, such as title, description, asking price, pickup location, image, and the current status. This model maintains a `belongsTo` connection to both the `User` and `Category` models.
+The platform is structured around several primary Eloquent models: `User`, `MarketplaceListing`, `RetailComponent`, and `Category`. The `User` model serves as the base, extending Authenticatable. It is designed to store important profile details and manage relationships to the `MarketplaceListing` items. The `MarketplaceListing` model acts as the central hub for P2P inventory. It monitors essential item information, such as title, description, asking price, pickup location, image, and the current status. This model maintains a `belongsTo` connection to both the `User` and `Category` models.
 
 ### 4.2 Routes Configuration
-Routes in RigRadar are categorized into groups located in `routes/web.php`:
-- **Public routes:** The landing page and core marketplace views are accessible to all visitors without authentication.
-- **Auth routes:** Registration and login are handled by default scaffolding.
-- **Protected routes:** Utilizing `auth` middleware, these routes allow buyers to interact with listings, chat with sellers, and manage their experience securely.
+Routes in RigRadar are categorized into organized groups located in `routes/web.php` utilizing route prefixes and middleware grouping:
+
+- **Public routes:** The landing page (`/`) and core marketplace search views (`/search`) are accessible to all visitors without authentication.
+- **Auth routes:** Registration (`/register`) and login (`/login`) are handled by Laravel's default authentication scaffolding and are protected by the guest middleware.
+- **Protected User routes:** Utilizing auth middleware, these routes (`/dashboard`, `/listings/create`) allow authenticated buyers and sellers to interact with listings, chat with users, and manage their personal inventory securely.
+- **Admin routes:** Guarded by a custom `role:admin` middleware, protecting the `/admin` prefix from standard consumer access.
 
 ### 4.3 Controllers & CRUD Logic
 The `PageController` handles standard page display operations. When an authenticated user wants to add an item to the marketplace, the logic ensures that the incoming request data is checked for validity using Laravel’s integrated validation. Required fields include title, price, and location. When an image is uploaded, it gets saved in the public storage folder using Laravel Storage. 
