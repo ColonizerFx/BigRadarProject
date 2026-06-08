@@ -121,6 +121,11 @@ class CartController extends Controller
         }
 
         session()->put('cart', $cart);
+
+        if ($request->input('checkout')) {
+            return redirect()->route('cart.checkout.view');
+        }
+
         return redirect()->route('cart.index')->with('success', 'PC build added to cart!');
     }
 
