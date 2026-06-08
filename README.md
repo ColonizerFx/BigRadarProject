@@ -467,12 +467,62 @@ The user interface of RigRadar was developed with a strong emphasis on a minimal
 **Figure 5.2.1 (Hero Banner):** The platform adopts a high-contrast yet friendly color scheme. A predominantly white and light-gray background minimizes visual noise, while a distinct primary blue is used for critical call-to-action (CTA) buttons, interactive elements, and branding. The Hero Banner utilizes a dark, immersive background image to create visual depth, paired with bold, white typography to ensure the main value proposition ("Complete Your Setup") is immediately legible. The layout leverages responsive CSS grids to ensure components align perfectly across different screen sizes.
 
 ### 5.3 Navigation & Links (10 marks)
-The navigation layout is controlled globally. It utilizes Laravel Blade directives (`@auth`, `@guest`) to dynamically change the UI according to the user's session state. Guest modes display simple call-to-action login buttons, while authenticated modes provide access to personalized dashboard controls.
+
+**5.3.1 User Dashboard**
+
+**Figure 5.3.1 (User Dashboard):** Navigation is designed to be intuitive and flat. The persistent top navigation bar provides immediate access to core modules: Find your Parts, Devices, PC Builder, and the User Marketplace. In the User Dashboard, information is segmented into distinct, readable cards ("Transaction History," "My Marketplace Listings," and "My Wishlist"). This compartmentalized approach prevents cognitive overload, allowing users to manage their P2P listings and track orders efficiently from a single, unified view.
 
 ### 5.4 UI Walkthrough (Page by Page)
-- **Landing Page:** Features a welcoming hero slider built with a bold headline framing the app's mission. It includes direct call-to-action links to register or browse the marketplace immediately.
-- **Marketplace Feed:** An active interface utilizing a dynamic `@forelse` loop. It displays all listings via interactive cards complete with location descriptions and pricing.
-- **Details Page:** A secure summary view showing the item's details, pickup conditions, seller profile information, and a primary call to action to contact the seller.
+
+**5.4.1 Marketplace Item Listing**
+
+**Figure 5.4.1 (Marketplace Item Listing):** The form layout for selling items is straightforward, utilizing clean input fields and clear dropdown menus for "Category" and "Condition". The prominent "Upload Image" utility ensures that user-generated P2P listings maintain a standard of visual quality.
+
+**5.4.2 User Marketplace page**
+
+**Figure 5.4.2 (User Marketplace Page):** This page functions as the public peer-to-peer (P2P) storefront where all community listings are aggregated. The interface utilizes a multi-layered filtering sidebar that allows users to sort available secondhand hardware by Category, Condition (e.g., "New Open Box", "Good Like New"), and Location. Listings are presented in a clean responsive grid. Each product card clearly demarcates the asking price, product title, and dynamic contextual call-to-action (CTA) buttons, such as "Chat with Seller" or a "Your Listing" tag if the authenticated user is the owner of that post. This ensures a streamlined browsing experience that keeps community commerce organized and easy to parse.
+
+**5.4.3 Search bar**
+
+**Figure 5.4.3 (Search Results Page):** The search results page serves as the primary dynamic interface that populates immediately after a user inputs a query into the centralized search bar. Adhering to the platform's minimalist design philosophy, the layout uses a structured grid system to display matching components, minimizing visual clutter so users can compare options efficiently. Each product card within the results grid displays key high-level data points: the component's name, an aggregated price range from various Malaysian retailers, and a clean thumbnail image. This page works in tandem with the filtering sidebar, allowing the results to update dynamically as the user narrows down hardware by brand, price range, or category, all while preserving generous whitespace and a clean, highly legible presentation.
+
+**5.4.4 Searching results**
+
+**Figure 5.4.4 (Searching):** The centralized search bar is positioned at the top of the hierarchy, reflecting its importance as the primary tool for navigating fragmented hardware markets. Filtering options (Category, Brands, Retailer) are presented horizontally, preserving vertical space for the search results.
+
+**5.4.5 Devices page**
+
+**Figure 5.4.5 (Product Details Page):** This page provides a comprehensive breakdown of a selected hardware component, emphasizing structural data hierarchy and immediate price transparency. The interface utilizes an asymmetrical two-column responsive grid layout. The left column focuses entirely on high-fidelity product imagery to give users a clear visual evaluation of the component. The right column centralizes transactional and analytical data, including the product title, overall user ratings, and a clear, real-time price comparison table that aggregates offers across different Malaysian retail partners. Technical specifications are neatly partitioned into an interactive tab or accordion format further down the page, preserving clean whitespace and preventing cognitive overload from dense hardware specs. A prominent, primary blue "Add to Cart" or "Add to PC Build" CTA button sits at the top of the interaction hierarchy, providing a frictionless path to purchase or system configuration.
+
+**5.4.6 PC Builder page**
+
+**Figure 5.4.6 (PC Builder):** This page breaks down the complex task of building a PC into a guided, step-by-step process. Each component category (CPU, GPU, Motherboard, etc.) features a dedicated selection dropdown, with a sticky "Build Summary" providing real-time cost tracking.
+
+**5.4.7 Cart page**
+
+**Figure 5.4.7 (Cart Page):** The cart page acts as a centralized validation checkpoint where users review selected hardware components before completing a purchase. The interface aggregates items dynamically into an open vertical stream, clearly breaking down product details, itemized pricing, and explicit retailer attributions (e.g., TMT, All IT Hypermarket) to preserve transparency. To prevent information fragmentation, a sticky "Order Summary" panel balances the layout on the right, providing a high-visibility breakdown of total costs (e.g., "RM 7,374.00") and a prominent primary "Proceed to Checkout" CTA button. This layout structure minimizes navigation friction, allowing users to make instantaneous alterations without losing context.
+
+**5.4.8 Checkout page**
+
+**Figure 5.4.8 (Checkout Page):** The checkout page is built around minimizing transaction anxiety through strict data structural clarity. By stripping away non-essential layout details like standard retail carousels and promotional sidebars, the clean layout ensures complete focus on fulfillment verification. The responsive grid partitions the view into interactive delivery form structures and a static billing summary. This streamlined setup guides the user sequentially through final order parameters, promoting a fast, reliable, and user-centric final step in the component procurement process.
+
+**5.4.9 About us page**
+
+**Figure 5.4.9 (About Us Page):** Shifting from transactional logic to brand identity, the About Us page relies on strong typographic hierarchy and clean whitespace to convey RigRadar's core mission. Utilizing generous spacing and structural layout grids, the page articulates the platform's vision of solving market fragmentation without cluttering the user interface. This approach builds platform trust and highlights the community-driven aspect of the integrated peer-to-peer marketplace, matching the modern, minimalist design aesthetic found across the application.
+
+**5.4.10 Contact Us page**
+
+**Figure 5.4.10 (Contact Us Page):** The Contact Us page provides a structured touchpoint for user inquiries, marketplace support, and platform feedback while strictly adhering to the application's minimalist design language. The interface features a balanced, responsive two-column layout. The left column presents a clean communication form with well-spaced input fields (such as Name, Email, Subject, and Message) that offer clear visual feedback upon interaction. The right column houses direct platform support channels and essential operational details, using distinct typography hierarchies to keep information highly scannable. By removing excessive visual clutter and utilizing a prominent, primary blue "Send Message" CTA button, the page ensures a frictionless and straightforward experience for users seeking technical assistance or reporting marketplace concerns.
+
+**5.4.11 Messages page**
+
+**5.4.12**
+
+**Figure 5.4.11 & 5.4.12 (Messaging):** To facilitate the P2P marketplace, the messaging interface adopts a familiar, modern chat bubble layout. This clean execution ensures that buyer-seller negotiations are organized and easily scannable.
+
+**5.4.13 User Dashboard**
+
+**Figure 5.4.13 (User Dashboard):** The user dashboard functions as a personalized workspace where authenticated users can comprehensively oversee their platform interactions. Following the application's clean, minimalist architectural language, the responsive interface organizes user data into three modular, high-contrast panels: Transaction History, My Marketplace Listings, and My Wishlist. The _Transaction History_ section provides structural transparency by logging previous order details and their specific fulfillment statuses (e.g., "Completed"). The _My Marketplace Listings_ container grants instantaneous access to listing controls, allowing users to perform seamless CRUD updates (editing or deleting items) or initiate a new post using the high-visibility "Sell New Item" CTA button. Lastly, the _My Wishlist_ section dynamically gathers bookmarked hardware components for rapid future retrieval. This design configuration consolidates administrative features into a single grid, reducing user friction and ensuring an intuitive management experience.
 
 ## 6.0 SYSTEM TESTING
 ### 6.1 Test Cases Table
