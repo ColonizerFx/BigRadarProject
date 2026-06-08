@@ -24,10 +24,18 @@
                     <ul class="divide-y divide-gray-200">
                         @php $total = 0; @endphp
                         @foreach($cart as $key => $item)
-                            @php $total += $item['price'] * $item['quantity']; @endphp
+                            @php
+                                $total += $item['price'] * $item['quantity'];
+                                $imgSrc = match(true) {
+                                    empty($item['image_path'])                      => null,
+                                    Str::startsWith($item['image_path'], 'http')    => $item['image_path'],
+                                    Str::startsWith($item['image_path'], 'assets/') => asset($item['image_path']),
+                                    default                                         => asset('storage/' . $item['image_path']),
+                                };
+                            @endphp
                             <li class="p-6 flex items-center">
                                 <div class="w-24 h-24 bg-gray-50 border border-gray-100 rounded p-2 flex-shrink-0 flex items-center justify-center">
-                                    <img src="{{ $item['image_path'] ? asset('storage/'.$item['image_path']) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704' }}" alt="" class="max-h-full object-contain mix-blend-multiply">
+                                    <img src="{{ $imgSrc ?? asset('assets/images/placeholder-part.png') }}" alt="{{ $item['name'] }}" class="max-h-full object-contain mix-blend-multiply">
                                 </div>
                                 <div class="ml-6 flex-1">
                                     <h3 class="text-lg font-bold text-gray-900">{{ $item['name'] }}</h3>

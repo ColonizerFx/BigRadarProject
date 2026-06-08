@@ -141,9 +141,18 @@
                         <span x-text="totalParts"></span> part(s) selected — prices from cheapest retailer
                     </div>
 
+                    {{-- Hidden form submitted by Alpine --}}
+                    @auth
+                    <form id="add-build-form" action="{{ route('cart.addBuild') }}" method="POST">
+                        @csrf
+                        <div id="build-product-inputs"></div>
+                    </form>
+                    @endauth
+
                     {{-- CTA --}}
                     <div class="space-y-3 mt-4">
-                        <button type="button" class="flex items-center justify-center gap-2 w-full bg-white border border-gray-900 text-gray-900 hover:bg-gray-50 font-bold py-3.5 rounded-full hover-lift transition-all text-sm shadow-sm">
+                        @auth
+                        <button type="button" @click="addToCart()" class="flex items-center justify-center gap-2 w-full bg-white border border-gray-900 text-gray-900 hover:bg-gray-50 font-bold py-3.5 rounded-full hover-lift transition-all text-sm shadow-sm">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                             Add to Cart
                         </button>
@@ -151,6 +160,11 @@
                             Proceed to Checkout
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </a>
+                        @else
+                        <a href="{{ route('login') }}" class="flex items-center justify-center gap-2 w-full bg-white border border-gray-900 text-gray-900 hover:bg-gray-50 font-bold py-3.5 rounded-full transition-all text-sm shadow-sm">
+                            Login to Add to Cart
+                        </a>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -187,6 +201,23 @@
             clearAll() {
                 this.selectedParts = {};
                 document.querySelectorAll('select[\\@change]').forEach(s => s.value = '');
+            },
+            addToCart() {
+                const parts = Object.values(this.selectedParts).filter(p => p && p.id);
+                if (parts.length === 0) {
+                    alert('Please select at least one part first.');
+                    return;
+                }
+                const container = document.getElementById('build-product-inputs');
+                container.innerHTML = '';
+                parts.forEach(part => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'product_ids[]';
+                    input.value = part.id;
+                    container.appendChild(input);
+                });
+                document.getElementById('add-build-form').submit();
             }
         }
     }

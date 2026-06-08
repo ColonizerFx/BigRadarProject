@@ -105,11 +105,19 @@
                     
                     <div class="space-y-4 mb-6">
                         @foreach($cart as $key => $item)
-                        <div class="flex gap-4">
+                        @php
+                            $imgSrc = match(true) {
+                                empty($item['image_path'])                          => null,
+                                Str::startsWith($item['image_path'], 'http')        => $item['image_path'],
+                                Str::startsWith($item['image_path'], 'assets/')     => asset($item['image_path']),
+                                default                                             => asset('storage/' . $item['image_path']),
+                            };
+                        @endphp
+                        <div class="flex gap-4 items-start">
                             <div class="w-16 h-16 bg-gray-50 rounded border border-gray-100 flex items-center justify-center flex-shrink-0 p-1">
-                                <img src="{{ $item['image_path'] ? asset('storage/'.$item['image_path']) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80' }}" class="max-h-full mix-blend-multiply">
+                                <img src="{{ $imgSrc ?? asset('assets/images/placeholder-part.png') }}" class="max-h-full object-contain mix-blend-multiply" alt="{{ $item['name'] }}">
                             </div>
-                            <div class="flex-1">
+                            <div class="flex-1 min-w-0">
                                 <h4 class="text-sm font-semibold text-gray-900 line-clamp-2 leading-tight">{{ $item['name'] }}</h4>
                                 <div class="text-xs text-gray-500 mt-1">Qty: {{ $item['quantity'] }}</div>
                                 <div class="text-sm font-bold text-gray-900 mt-1">RM {{ number_format($item['price'], 2) }}</div>

@@ -43,17 +43,43 @@
                                     <div class="text-sm font-bold text-gray-900">Order #{{ $order->id }}</div>
                                     <div class="text-xs text-gray-400">{{ $order->created_at->format('d M Y') }}</div>
                                 </div>
-                                <div class="text-sm text-gray-600 mb-6">
+                                <div class="space-y-2 mb-6">
                                     @foreach($order->items as $item)
-                                        <div class="truncate">{{ $item->quantity }}x {{ $item->product->name ?? 'Product Deleted' }}</div>
+                                        @php
+                                            $orderImg = null;
+                                            if ($item->product) {
+                                                $p = $item->product->image_path;
+                                                $orderImg = match(true) {
+                                                    empty($p)                          => null,
+                                                    Str::startsWith($p, 'http')        => $p,
+                                                    Str::startsWith($p, 'assets/')     => asset($p),
+                                                    default                            => asset('storage/' . $p),
+                                                };
+                                            }
+                                        @endphp
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
+                                                <img src="{{ $orderImg ?? asset('assets/images/placeholder-part.png') }}" class="w-full h-full object-contain mix-blend-multiply rounded" alt="">
+                                            </div>
+                                            <div class="text-sm text-gray-600 truncate min-w-0">{{ $item->quantity }}x {{ $item->product->name ?? 'Product Deleted' }}</div>
+                                        </div>
                                     @endforeach
                                 </div>
                                 <div class="flex justify-between items-end">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-bold bg-green-100 text-green-700">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-bold
+                                        {{ $order->status === 'Cancelled' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-700' }}">
                                         {{ ucfirst($order->status) }}
                                     </span>
                                     <span class="font-bold text-gray-900">RM {{ number_format($order->total_amount, 2) }}</span>
                                 </div>
+                                @if($order->status !== 'Cancelled')
+                                <form method="POST" action="{{ route('orders.cancel', $order->id) }}" onsubmit="return confirm('Cancel Order #{{ $order->id }}?')" class="mt-3">
+                                    @csrf
+                                    <button type="submit" class="w-full text-xs font-semibold text-red-500 border border-red-200 rounded-lg py-1.5 hover:bg-red-50 transition-colors">
+                                        Cancel Order
+                                    </button>
+                                </form>
+                                @endif
                             </div>
                         @endforeach
                     </div>
@@ -85,9 +111,17 @@
                     <div class="bg-white rounded-xl border border-gray-200 p-4">
                         <div class="space-y-4">
                             @foreach($listings as $listing)
+                                @php
+                                    $listingImg = match(true) {
+                                        empty($listing->image_path)                          => null,
+                                        Str::startsWith($listing->image_path, 'http')        => $listing->image_path,
+                                        Str::startsWith($listing->image_path, 'assets/')     => asset($listing->image_path),
+                                        default                                              => asset('storage/' . $listing->image_path),
+                                    };
+                                @endphp
                                 <div class="flex flex-col sm:flex-row gap-4 items-center border border-gray-200 rounded-lg p-3 relative">
                                     <div class="w-20 h-20 bg-gray-100 flex items-center justify-center rounded flex-shrink-0">
-                                        <img src="{{ $listing->image_path ? asset('storage/'.$listing->image_path) : 'https://images.unsplash.com/photo-1587202372616-b43abea06c2a' }}" class="w-full h-full object-cover rounded">
+                                        <img src="{{ $listingImg ?? asset('assets/images/placeholder-part.png') }}" class="w-full h-full object-cover rounded">
                                     </div>
                                     <div class="flex-1">
                                         <h4 class="font-bold text-gray-900">{{ $listing->title }}</h4>
@@ -134,9 +168,17 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @foreach($wishlisted as $wish)
                                 @if($wish->product)
+                                @php
+                                    $wishImg = match(true) {
+                                        empty($wish->product->image_path)                          => null,
+                                        Str::startsWith($wish->product->image_path, 'http')        => $wish->product->image_path,
+                                        Str::startsWith($wish->product->image_path, 'assets/')     => asset($wish->product->image_path),
+                                        default                                                    => asset('storage/' . $wish->product->image_path),
+                                    };
+                                @endphp
                                 <div class="border border-gray-200 rounded-lg p-3 flex items-center gap-4 relative">
                                     <div class="w-16 h-16 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
-                                        <img src="{{ $wish->product->image_path ? asset('storage/'.$wish->product->image_path) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=100' }}" class="h-12 object-contain mix-blend-multiply">
+                                        <img src="{{ $wishImg ?? asset('assets/images/placeholder-part.png') }}" class="h-12 object-contain mix-blend-multiply">
                                     </div>
                                     <div class="flex-1 min-w-0 pr-8">
                                         <a href="{{ route('products.details', $wish->product->id) }}" class="text-xs font-bold text-gray-900 hover:text-blue-600 truncate block">{{ $wish->product->name }}</a>

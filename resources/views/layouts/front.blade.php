@@ -132,14 +132,12 @@
                 <h4 class="font-bold text-gray-800 mb-3 text-sm">About BigRadar</h4>
                 <ul class="space-y-2">
                     <li><a href="{{ url('/about') }}" class="hover:text-brand transition-colors">About Us</a></li>
-                    <li><a href="#" class="hover:text-brand transition-colors">Policies</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold text-gray-800 mb-3 text-sm">Help & Contact</h4>
                 <ul class="space-y-2">
                     <li><a href="{{ url('/contact') }}" class="hover:text-brand transition-colors">Contact us</a></li>
-                    <li><a href="#" class="hover:text-brand transition-colors">FAQ</a></li>
                 </ul>
             </div>
         </div>

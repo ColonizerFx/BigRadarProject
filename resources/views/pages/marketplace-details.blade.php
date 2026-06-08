@@ -65,26 +65,40 @@
                     <div class="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-1">Asking Price</div>
                     <div class="text-[32px] font-bold text-gray-900 mb-4" style="font-family: 'Inter', sans-serif;">RM {{ number_format($item->price, 2) }}</div>
                     
-                    {{-- Contact Seller Button --}}
+                    {{-- Action Buttons --}}
                     @auth
                         @if(Auth::id() !== $item->user_id)
-                            <form action="{{ route('chat.initiate') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="listing_id" value="{{ $item->id }}">
-                                <button type="submit" class="w-full text-center bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors text-sm shadow-sm flex justify-center items-center gap-2">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                                    Chat with Seller
-                                </button>
-                            </form>
+                            <div class="space-y-3">
+                                <form action="{{ route('cart.buyMarketplace', $item->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="w-full text-center bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors text-sm shadow-sm flex justify-center items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                        Buy Now
+                                    </button>
+                                </form>
+                                <form action="{{ route('chat.initiate') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="listing_id" value="{{ $item->id }}">
+                                    <button type="submit" class="w-full text-center border border-gray-300 hover:border-brand hover:text-brand text-gray-800 font-bold py-3 rounded-lg transition-colors text-sm flex justify-center items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                        Chat with Seller
+                                    </button>
+                                </form>
+                            </div>
                         @else
                             <button disabled class="w-full text-center border border-gray-200 bg-gray-50 rounded-lg py-3 text-sm font-bold text-gray-400 cursor-not-allowed">
                                 Your Listing
                             </button>
                         @endif
                     @else
-                        <a href="{{ route('login') }}" class="w-full block text-center bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors text-sm shadow-sm">
-                            Login to Chat
-                        </a>
+                        <div class="space-y-3">
+                            <a href="{{ route('login') }}" class="w-full block text-center bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-lg transition-colors text-sm shadow-sm">
+                                Login to Buy
+                            </a>
+                            <a href="{{ route('login') }}" class="w-full block text-center border border-gray-300 hover:border-brand hover:text-brand text-gray-800 font-bold py-3 rounded-lg transition-colors text-sm">
+                                Login to Chat
+                            </a>
+                        </div>
                     @endauth
                 </div>
 

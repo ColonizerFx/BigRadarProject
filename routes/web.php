@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
     // Phase 3 Features (Cart, Wishlist, Marketplace)
     Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/add', [\App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/add-build', [\App\Http\Controllers\CartController::class, 'addBuild'])->name('cart.addBuild');
+    Route::post('/cart/buy-marketplace/{id}', [\App\Http\Controllers\CartController::class, 'buyMarketplaceListing'])->name('cart.buyMarketplace');
+    Route::post('/orders/{id}/cancel', [\App\Http\Controllers\CartController::class, 'cancelOrder'])->name('orders.cancel');
     Route::post('/cart/remove', [\App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
     Route::get('/cart/checkout', [\App\Http\Controllers\CartController::class, 'checkoutView'])->name('cart.checkout.view');
     Route::post('/cart/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');

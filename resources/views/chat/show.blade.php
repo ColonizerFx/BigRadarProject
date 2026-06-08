@@ -50,8 +50,8 @@
                     </div>
                     {{-- Actions --}}
                     <div class="flex items-center gap-2 flex-shrink-0">
-                        <a href="{{ route('marketplace.details', $listing->id) }}" class="text-xs font-semibold text-gray-700 border border-gray-300 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors whitespace-nowrap">View Listing</a>
-                        <button type="button" onclick="document.querySelector('[name=message]').value='Hi, I\'m interested in buying {{ addslashes($listing->title) }}. Is it still available?'; document.querySelector('[name=message]').focus();" class="text-xs font-semibold text-white bg-brand px-3 py-1.5 rounded-lg hover:bg-brand-dark transition-colors whitespace-nowrap">Make Offer</button>
+                        <a href="{{ route('marketplace.details', $listing->id) }}" target="_blank" class="text-xs font-semibold text-gray-700 border border-gray-300 px-3 py-1.5 rounded-lg hover:bg-gray-50 transition-colors whitespace-nowrap">View Listing ↗</a>
+                        <button type="button" onclick="sendOffer()" class="text-xs font-semibold text-white bg-brand px-3 py-1.5 rounded-lg hover:bg-brand-dark transition-colors whitespace-nowrap">Make Offer</button>
                     </div>
                 </div>
             </div>
@@ -84,5 +84,12 @@
     // Scroll to bottom of chat
     const chatContainer = document.querySelector('.overflow-y-auto');
     chatContainer.scrollTop = chatContainer.scrollHeight;
+
+    function sendOffer() {
+        const input = document.querySelector('[name=message]');
+        const form = input.closest('form');
+        input.value = 'Hi, I\'m interested in buying {{ addslashes($listing->title ?? '') }}. Is it still available?';
+        form.submit();
+    }
 </script>
 @endsection
