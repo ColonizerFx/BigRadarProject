@@ -396,7 +396,38 @@ sequenceDiagram
 ```
 
 ### 3.3 System Architecture Overview
-RigRadar follows the standard Laravel MVC (Model-View-Controller) framework. A browser request first reaches the Route definitions in `routes/web.php`, which forwards the request to the suitable Controller. The controller communicates with Eloquent Models to retrieve or store data in the MySQL Database. The processed information is subsequently sent to a Blade View that generates the final HTML response to the browser. Middleware layers sit between the route and controller to implement authentication and role-based access before any controller logic executes.
+
+The Inventory Management System is developed using a three-tier architecture based on the Laravel MVC (Model-View-Controller) framework. The presentation layer consists of Blade Views that provide interfaces for IT support staff to manage students, inventory items, and loan transactions. User requests are processed through the routing and middleware layer, which handles authentication, authorization, and request validation. The controller layer contains the business logic responsible for inventory management and loan processing. Models interact with the MySQL database to perform data storage and retrieval operations. The system ensures data consistency through validation rules and database transactions, particularly during inventory checkout processes where product availability and loan records must be updated simultaneously. This architecture promotes maintainability, scalability, security, and clear separation of concerns between system components.
+
+```mermaid
+flowchart TD
+    PL["Presentation Layer<br/>Blade Views"]
+    AL["Application Layer<br/>Routes & Middleware"]
+    CBL["Controllers & Business Logic"]
+    EM["Eloquent Models"]
+    DB[("MySQL Database")]
+    
+    PL --> AL
+    AL --> CBL
+    CBL --> EM
+    EM --> DB
+    
+    U["Users"]
+    S["Students"]
+    PI["Products Inventory"]
+    IL["Inventory Loans"]
+    D["Departments"]
+    RC["Resource Categories"]
+    SD["Staff Directory"]
+
+    DB -.-> U
+    DB -.-> S
+    DB -.-> PI
+    DB -.-> IL
+    DB -.-> D
+    DB -.-> RC
+    DB -.-> SD
+```
 
 ## 4.0 TECHNICAL IMPLEMENTATION
 ### 4.1 Models & Database Migrations
