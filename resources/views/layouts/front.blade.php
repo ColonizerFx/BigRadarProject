@@ -90,7 +90,7 @@
                 <span class="h-4 w-px bg-gray-300"></span>
                 <a href="{{ url('/marketplace') }}" class="nav-link text-[15px] font-bold whitespace-nowrap {{ request()->is('marketplace*') ? 'nav-active text-gray-900' : 'text-gray-600' }}">User Marketplace</a>
                 <span class="h-4 w-px bg-gray-300"></span>
-                <a href="{{ url('/about') }}" class="nav-link text-[15px] font-bold whitespace-nowrap text-gray-600">Our Stores</a>
+                <a href="{{ url('/about') }}" class="nav-link text-[15px] font-bold whitespace-nowrap {{ request()->is('about*') ? 'nav-active text-gray-900' : 'text-gray-600' }}">About Us</a>
                 <span class="h-4 w-px bg-gray-300"></span>
                 <a href="{{ url('/contact') }}" class="nav-link text-[15px] font-bold whitespace-nowrap text-gray-600">Contact Us</a>
             </nav>

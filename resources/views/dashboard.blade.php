@@ -28,7 +28,7 @@
         
         <!-- Left Column: Transaction History -->
         <div class="w-full lg:w-1/3">
-            <div class="bg-[#F8FAFC] rounded-xl border border-gray-100 p-6 h-full">
+            <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 h-full">
                 <h3 class="text-lg font-bold text-gray-900 mb-6">Transaction History</h3>
                 
                 @php
@@ -38,7 +38,7 @@
                 @if($orders->count() > 0)
                     <div class="space-y-4">
                         @foreach($orders as $order)
-                            <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+                            <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
                                 <div class="flex justify-between items-center mb-4">
                                     <div class="text-sm font-bold text-gray-900">Order #{{ $order->id }}</div>
                                     <div class="text-xs text-gray-400">{{ $order->created_at->format('d M Y') }}</div>
@@ -69,7 +69,7 @@
         <div class="w-full lg:w-2/3 space-y-8">
             
             <!-- Marketplace Listings -->
-            <div class="bg-[#F8FAFC] rounded-xl border border-gray-100 p-6">
+            <div class="bg-gray-50 rounded-xl border border-gray-200 p-6">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-lg font-bold text-gray-900">My Marketplace Listings</h3>
                     <a href="{{ route('marketplace.create') }}" class="text-sm bg-blue-600 text-white font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
@@ -82,11 +82,11 @@
                 @endphp
 
                 @if($listings->count() > 0)
-                    <div class="bg-white rounded-xl border border-gray-100 p-4">
+                    <div class="bg-white rounded-xl border border-gray-200 p-4">
                         <div class="space-y-4">
                             @foreach($listings as $listing)
-                                <div class="flex flex-col sm:flex-row gap-4 items-center border border-gray-100 rounded-lg p-3 relative">
-                                    <div class="w-20 h-20 bg-gray-50 flex items-center justify-center rounded flex-shrink-0">
+                                <div class="flex flex-col sm:flex-row gap-4 items-center border border-gray-200 rounded-lg p-3 relative">
+                                    <div class="w-20 h-20 bg-gray-100 flex items-center justify-center rounded flex-shrink-0">
                                         <img src="{{ $listing->image_path ? asset('storage/'.$listing->image_path) : 'https://images.unsplash.com/photo-1587202372616-b43abea06c2a' }}" class="w-full h-full object-cover rounded">
                                     </div>
                                     <div class="flex-1">
@@ -122,7 +122,7 @@
             </div>
 
             <!-- Wishlist -->
-            <div class="bg-[#F8FAFC] rounded-xl border border-gray-100 p-6">
+            <div class="bg-gray-50 rounded-xl border border-gray-200 p-6">
                 <h3 class="text-lg font-bold text-gray-900 mb-6">My Wishlist</h3>
                 
                 @php
@@ -130,12 +130,12 @@
                 @endphp
                 
                 @if($wishlisted->count() > 0)
-                    <div class="bg-white rounded-xl border border-gray-100 p-4">
+                    <div class="bg-white rounded-xl border border-gray-200 p-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @foreach($wishlisted as $wish)
                                 @if($wish->product)
-                                <div class="border border-gray-100 rounded-lg p-3 flex items-center gap-4 relative">
-                                    <div class="w-16 h-16 bg-gray-50 rounded flex items-center justify-center flex-shrink-0">
+                                <div class="border border-gray-200 rounded-lg p-3 flex items-center gap-4 relative">
+                                    <div class="w-16 h-16 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
                                         <img src="{{ $wish->product->image_path ? asset('storage/'.$wish->product->image_path) : 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=100' }}" class="h-12 object-contain mix-blend-multiply">
                                     </div>
                                     <div class="flex-1 min-w-0 pr-8">

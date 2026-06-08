@@ -5,15 +5,16 @@
 @section('content')
 <div class="bg-white">
     <!-- Hero Section -->
-    <div class="relative bg-blue-600">
-        <div class="absolute inset-0">
-            <img class="w-full h-full object-cover mix-blend-multiply opacity-20" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Office workspace">
-        </div>
-        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">About BigRadar</h1>
-            <p class="mt-6 max-w-3xl mx-auto text-xl text-blue-100">
-                We are on a mission to bring the world's most advanced mobile technology directly to you. Fast, reliable, and premium.
-            </p>
+    <div class="relative h-[380px] overflow-hidden">
+        <img class="absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Office workspace">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent"></div>
+        <div class="relative h-full flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div>
+                <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg">About BigRadar</h1>
+                <p class="mt-4 max-w-xl text-lg text-white/75 leading-relaxed">
+                    Helping Malaysians find the best deals on PC parts, laptops, and tech gear — all in one place.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -22,15 +23,18 @@
         <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             <div>
                 <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl mb-6">Our Story</h2>
-                <div class="prose prose-lg text-slate-600">
+                <div class="space-y-4 text-slate-600 text-[16px] leading-relaxed">
                     <p>
-                        Founded in 2026 as part of a university project, BigRadar started with a simple idea: purchasing a new mobile device shouldn't be complicated. We wanted to build a platform that strips away the jargon and focuses on what truly matters - the user experience and cutting-edge technology.
+                        BigRadar started in 2026 as a university project born out of a pretty relatable frustration — trying to build a PC in Malaysia and having no idea where to get the best price. Is TMT cheaper than Harvey Norman for that GPU? Does All IT have it in stock? You'd have to check five tabs just to find out.
                     </p>
                     <p>
-                        Today, BigRadar represents the pinnacle of mobile e-commerce. We carefully curate our catalog to include only the highest quality devices, ensuring that our customers always receive the best value for their investment. 
+                        We built BigRadar to fix that. One place where you can compare prices for GPUs, CPUs, motherboards, RAM, and everything else you need — pulled from real Malaysian retailers, so you always know you're getting a fair deal.
                     </p>
                     <p>
-                        Our team is passionate about tech and dedicated to providing unparalleled customer service. Whether you're a casual user or a tech enthusiast, BigRadar is your ultimate destination for mobile innovation.
+                        Beyond official retailer listings, we also have a user marketplace where you can buy and sell second-hand parts. Because not everyone needs a brand new RTX card, and a good used one at the right price is just as valid a choice.
+                    </p>
+                    <p>
+                        We're a small team that genuinely cares about the local PC building scene. If you're putting together your first rig or upgrading your setup, BigRadar is here to make that process less of a headache.
                     </p>
                 </div>
             </div>

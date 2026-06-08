@@ -100,9 +100,10 @@ class PageController extends Controller
             $query->where('category', $request->category);
         }
 
-        if ($request->has('retailer') && is_array($request->retailer)) {
-            $query->whereHas('retailers', function($q) use ($request) {
-                $q->whereIn('name', $request->retailer);
+        $selectedRetailers = array_filter((array) $request->input('retailer', []));
+        if (!empty($selectedRetailers)) {
+            $query->whereHas('retailers', function($q) use ($selectedRetailers) {
+                $q->whereIn('name', $selectedRetailers);
             });
         }
 
@@ -148,15 +149,28 @@ class PageController extends Controller
             $query->where('category', $request->category);
         }
 
-        if ($request->has('condition') && is_array($request->condition)) {
-            $query->whereIn('condition', $request->condition);
+        $selectedConditions = array_filter((array) $request->input('condition', []));
+        if (!empty($selectedConditions)) {
+            $query->whereIn('condition', $selectedConditions);
         }
 
-        if ($request->has('location') && is_array($request->location)) {
-            $query->whereIn('location', $request->location);
+        $selectedLocations = array_filter((array) $request->input('location', []));
+        if (!empty($selectedLocations)) {
+            $query->whereIn('location', $selectedLocations);
         }
 
-        $listings = $query->latest()->get();
+        if ($request->sort === 'newest' || !$request->sort) {
+            $query->latest();
+        }
+
+        $listings = $query->get();
+
+        if ($request->sort === 'price_asc') {
+            $listings = $listings->sortBy('price');
+        } elseif ($request->sort === 'price_desc') {
+            $listings = $listings->sortByDesc('price');
+        }
+
         return view('pages.marketplace', compact('listings'));
     }
 

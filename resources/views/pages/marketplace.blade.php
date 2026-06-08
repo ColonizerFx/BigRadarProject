@@ -71,11 +71,11 @@
             <div class="flex-1"></div>
 
             {{-- Sort Dropdown (right-aligned) --}}
-            <select class="border border-gray-300 rounded-full px-4 py-2 text-sm text-gray-700 bg-white hover:border-gray-400 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8">
-                <option>Default</option>
-                <option>Price: lowest first</option>
-                <option>Price: highest first</option>
-                <option>Newly listed</option>
+            <select name="sort" onchange="document.getElementById('marketplace-filter-form').submit()" class="border border-gray-300 rounded-full px-4 py-2 text-sm text-gray-700 bg-white hover:border-gray-400 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8">
+                <option value="">Default</option>
+                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Price: lowest first</option>
+                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price: highest first</option>
+                <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newly listed</option>
             </select>
         </div>
     </form>

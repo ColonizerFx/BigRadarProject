@@ -54,15 +54,8 @@
                     @endforeach
                 </select>
 
-                {{-- Condition Dropdown --}}
-                <select name="condition" onchange="document.getElementById('filter-form').submit()" class="border border-gray-200 rounded-full px-4 py-1.5 text-sm text-gray-700 bg-white hover:bg-gray-50 focus:ring-brand focus:border-brand transition-all cursor-pointer appearance-none pr-8 shadow-sm">
-                    <option value="">Condition</option>
-                    <option value="New" {{ request('condition') == 'New' ? 'selected' : '' }}>New</option>
-                    <option value="Refurbished" {{ request('condition') == 'Refurbished' ? 'selected' : '' }}>Refurbished</option>
-                </select>
-
                 {{-- Reset Link --}}
-                @if(request()->except('search'))
+                @if(request()->except(['search', 'sort']))
                     <a href="{{ url('/products') }}" class="text-sm font-semibold text-red-500 hover:text-red-700 underline underline-offset-2 ml-2 transition-colors">Clear Filters</a>
                 @endif
 
