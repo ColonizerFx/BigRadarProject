@@ -555,15 +555,29 @@ The user interface of RigRadar was developed with a strong emphasis on a minimal
 
 ## 8.0 CONCLUSION
 ### 8.1 Summary of Achievements
-The RigRadar project has successfully delivered a robust, centralized web application built on the Laravel MVC framework tailored specifically toward mitigating the compounding inefficiencies of sourcing PC parts. The development group successfully materialized a multi-role user architecture.
 
-Buyers benefit from real-time visibility over official and surplus items, shifting consumer habits away from unstructured communication channels. By managing data structures through an optimized MySQL schema, RigRadar presents a reliable framework supporting community welfare in accordance with Shariah-compliant e-commerce practices.
+The RigRadar project has successfully delivered a centralized and user-friendly web application developed using the Laravel MVC framework. The platform addresses the challenges of sourcing PC components by providing a structured marketplace that connects users with both official retail products and community-listed items through a single interface.
+
+The project successfully implemented a multi-role user architecture, ensuring secure access and personalized functionality for different user groups. Buyers benefit from real-time access to product listings, enabling more informed purchasing decisions without relying on fragmented information sources. Supported by an optimized MySQL database and Laravel's robust architecture, RigRadar provides an efficient, scalable, and reliable platform that promotes transparency and aligns with Shariah-compliant e-commerce principles.
 
 ### 8.2 Future Improvements
-To expand the operational efficiency and community impact of the platform, several key upgrades are proposed for future development iterations:
-- **Integrated Secure Payment Gateway:** Implementation of third-party payment APIs (such as ToyyibPay or Stripe) to handle micro-transactions directly on the app.
-- **Real-Time In-App Chat System:** Introducing a WebSockets-driven chat feature utilizing Laravel Reverb or Pusher to establish a direct communication link between vendors and buyers.
-- **Cross-Platform Mobile Application:** Developing native or hybrid mobile apps using frameworks like Flutter or React Native to supply push notifications instantly whenever nearby vendors create new listings.
+
+To further enhance the functionality, scalability, and user experience of RigRadar, several improvements are proposed for future development:
+
+1. **Integrated Secure Payment Gateway:**
+   Integration of third-party payment services such as ToyyibPay or Stripe would enable users to complete transactions directly within the platform, providing a more seamless and secure purchasing experience.
+
+2. **Real-Time In-App Chat System:**
+   A real-time messaging feature powered by technologies such as Laravel Reverb or Pusher could facilitate direct communication between buyers and sellers, improving negotiation and transaction efficiency.
+
+3. **Cross-Platform Mobile Application:**
+   Developing a mobile application using frameworks such as Flutter or React Native would improve accessibility and allow users to receive instant notifications regarding new listings, price changes, and marketplace updates.
+
+4. **Advanced Product Search and Filtering:**
+   Enhanced search capabilities, including filtering by component type, brand, price range, and specifications, would help users locate suitable PC parts more efficiently.
+
+5. **Wishlist and Price Alert Features:**
+   Users could save products of interest and receive notifications when prices change or when desired items become available, improving engagement and user satisfaction.
 
 ## REFERENCES
 1. Apache Friends. (n.d.). XAMPP installers and downloads. Retrieved from https://www.apachefriends.org 
