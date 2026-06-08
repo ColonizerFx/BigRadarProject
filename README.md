@@ -213,49 +213,61 @@ In summary, RigRadar is a comprehensive MVC-based web application engineered to 
 
 ---
 
-# REPORT
+# INTERNATIONAL ISLAMIC UNIVERSITY MALAYSIA (IIUM)
+## KULLIYYAH OF INFORMATION TECHNOLOGY AND COMMUNICATION
+
+**WEB APPLICATION DEVELOPMENT (BIIT 2305)** **SEMESTER II, 2025/2026** **SECTION 3**
+
+**TOPIC:** RIGRADAR: CENTRALIZED PC COMPONENT LOCATOR & MARKETPLACE  
+**INSTRUCTOR:** DR. NAJHAN BIN MUHAMAD IBRAHIM  
+**GITHUB REPOSITORY:** https://github.com/ColonizerFx/RigRadarProject  
+
+| NAME | MATRIC NUMBER |
+| :--- | :--- |
+| HARITS DANISH BIN MOHD FAIRUZ | 2417417 |
+| DANISH ISKANDAR BIN MUHAMMAD ANNUAR | 2418095 |
+| MOHAMAD AZRELL HAFIZY BIN A HAMID | 2418013 |
+| MOHAMAD AFFIF AFIQ BIN MOHD AFFENDI | 2415445 |
+| DANIEL HAQIMI BIN MUHAMAD KAMAL | 2318163 |
+
+
+---
 
 ## 1.0 EXECUTIVE SUMMARY
+
 ### 1.1 Project Overview
-RigRadar is a centralized web application developed using the Laravel Model-View-Controller (MVC) framework. The main purpose of the system is to streamline PC component surveying and purchasing by connecting hardware enthusiasts with official retailers and a peer-to-peer (P2P) secondhand marketplace under a single dashboard. 
-
-The system was built using Laravel 10.x, MySQL for database management, the Blade templating engine for dynamic web pages, and Tailwind CSS to ensure a responsive and user-friendly interface.
-
-Instead of relying on fragmented methods such as navigating multiple retailer sites or local forums, RigRadar provides a more organized and reliable platform for sourcing hardware. The system benefits both consumers and private sellers while supporting ethical and Shariah-compliant e-commerce values.
+RigRadar is a comprehensive, web-based centralized hardware aggregator tailored for PC builders, hardware enthusiasts, and gamers. Developed utilizing the Laravel Model-View-Controller (MVC) framework and Tailwind CSS, the platform bridges the gap between fragmented official retail stores and local secondhand markets. It provides a unified dashboard featuring a cross-retailer search engine, dynamic price comparisons, and a secure, Shariah-compliant peer-to-peer (P2P) marketplace.
 
 ### 1.2 Objectives Achieved
-The project successfully achieved its main objectives:
-- Developed a complete cross-retailer search engine to filter hardware data across different official stores.
-- Implemented a P2P marketplace module allowing users to perform full CRUD operations on secondhand part listings.
-- Deployed a secure authentication system separating users into Consumer and Vendor roles with role-based access.
-- Established automated dynamic price comparisons for PC parts to ensure buyers make data-driven purchasing decisions.
+* Successfully developed a unified web application streamlining PC component surveying.
+* Implemented consolidated view reports (data tables) aggregating pricing and stock from partnered retailers and user listings.
+* Automated core processes, including real-time cross-retailer search functionality, dynamic price sorting, and seamless CRUD operations for the P2P marketplace.
+
+---
 
 ## 2.0 PROBLEM STATEMENT
-### 2.1 Problem Background
-Currently, consumers looking to build or upgrade a PC must manually search across fragmented platforms. They are forced to visit individual official retailer websites to check component availability and pricing. This environment leads to inefficient data retrieval and a highly frustrating consumer experience when comparing prices.
 
-At the same time, if users want to buy or sell used parts, they must navigate to entirely separate platforms (like eBay or local forums) that lack integration with official retail pricing.
+### 2.1 Problem Background
+Consumers building or upgrading PCs traditionally face highly fragmented platforms. To check component pricing and availability, they must manually navigate disconnected retailer websites (e.g., All IT Hypermarket, Harvey Norman, TMT). This results in inefficient data retrieval. Furthermore, the secondhand market exists on entirely separate platforms (like eBay or forums), forcing users to constantly switch contexts to compare new versus used parts.
 
 ### 2.2 Problem Statement
-The component sourcing process is largely unstructured and inefficient. There is no dedicated platform that allows hardware enthusiasts to easily and reliably find parts. Because of this, many people depend on disconnected channels.
-
-This situation leads to several key issues:
-- **Fragmented searching:** Users must manually switch between multiple disconnected retailer websites to compare prices.
-- **Poor information access:** Lack of a centralized platform makes it difficult to check real-time stock and find the closest physical store locations quickly.
-- **No unified platform:** There is no platform that allows consumers to survey official brand-new retail prices and local secondhand marketplace listings simultaneously.
+* **Fragmented Searching:** Users must manually switch between multiple disconnected retailer websites to compare prices.
+* **Lack of Centralization:** There is no unified system to easily search specific hardware models, check real-time stock, and locate physical stores.
+* **Disconnected Markets:** No single platform allows consumers to survey official brand-new retail prices and local secondhand listings simultaneously.
 
 ### 2.3 Project Objectives
-1. To develop a functional unified web application that streamlines PC component surveying and purchasing under a single dashboard using the Laravel MVC framework.
-2. To automate real-time search functionality and sort algorithms that compare prices across different vendors.
-3. To provide seamless CRUD operations for users to manage their P2P marketplace listings securely.
-4. To implement a secure authentication system that separates users into distinct roles with their own dashboards and permissions.
+* To develop a centralized platform that aggregates hardware pricing and availability across multiple vendors.
+* To provide robust CRUD functionality enabling users to manage their own P2P secondhand listings.
+* To integrate automated sorting algorithms that compare and display the most cost-effective options in real-time.
 
 ### 2.4 Project Scope
 The RigRadar application is designed to include several core features within its current development scope:
-- **User Registration and Authentication:** Users, including consumers and sellers, are able to register, log in, and manage their accounts securely through Laravel’s built-in authentication system.
-- **Marketplace Listing Management (CRUD):** Sellers are able to manage component listings by creating, viewing, updating, and deleting them. Each listing includes details such as title, quantity, price, condition, and location.
-- **Cross-Retailer Search & Comparison:** Consumers can search all available parts, apply filters based on category or location, and compare official retail prices with P2P used prices.
-- **Role-Based Access Control (RBAC):** The system separates users to ensure that each user only has access to features relevant to their role.
+* **User Registration and Authentication:** Users, including consumers and sellers, are able to register, log in, and manage their accounts securely through Laravel's built-in authentication system.
+* **Marketplace Listing Management (CRUD):** Sellers are able to manage component listings by creating, viewing, updating, and deleting them. Each listing includes details such as title, quantity, price, condition, and location.
+* **Cross-Retailer Search & Comparison:** Consumers can search all available parts, apply filters based on category or location, and compare official retail prices with P2P used prices.
+* **Role-Based Access Control (RBAC):** The system separates users to ensure that each user only has access to features relevant to their role.
+
+---
 
 ## 3.0 SYSTEM DESIGN
 ### 3.1 Entity Relationship Diagram (ERD)
