@@ -1,7 +1,7 @@
-# PROJECT PROPOSAL GUIDELINES 
+﻿# PROJECT PROPOSAL GUIDELINES 
 ### BIIT 2305 
 ### PROPOSAL FOR PROJECT DEVELOPMENT 
-### BigRadar: Centralized PC Component Locator & Marketplace 
+### RigRadar: Centralized PC Component Locator & Marketplace 
 ### GROUP 2 
 
 | NAME | MATRIC NO. |
@@ -17,7 +17,7 @@
 ## PROPOSAL FOR PROJECT DEVELOPMENT 
 
 ### 1.1 INTRODUCTION
-The proposed project is a web-based application, BigRadar, developed using the Laravel Model-View-Controller (MVC) framework.  BigRadar is a centralized hardware aggregator designed specifically for the niche market of PC builders, hardware enthusiasts, and gamers.  The application's criteria include a centralized dashboard featuring a cross-retailer search engine, dynamic price comparison, and a peer-to-peer (P2P) secondhand marketplace.  The system features full CRUD (Create, Read, Update, Delete) capabilities, allowing users to manage their marketplace listings, alongside an integrated search function to locate PC components effectively across multiple official retailers. 
+The proposed project is a web-based application, RigRadar, developed using the Laravel Model-View-Controller (MVC) framework.  RigRadar is a centralized hardware aggregator designed specifically for the niche market of PC builders, hardware enthusiasts, and gamers.  The application's criteria include a centralized dashboard featuring a cross-retailer search engine, dynamic price comparison, and a peer-to-peer (P2P) secondhand marketplace.  The system features full CRUD (Create, Read, Update, Delete) capabilities, allowing users to manage their marketplace listings, alongside an integrated search function to locate PC components effectively across multiple official retailers. 
 
 ### 1.2 PROBLEM DESCRIPTION
 
@@ -38,7 +38,7 @@ The primary objective is to develop a unified web application that streamlines P
 ### 1.4 PROJECT SCOPE
 
 **1.4.1 Scope** 
-The scope of BigRadar covers the backend database management and frontend user interface for three main operational modules: the Cross-Retailer Search Engine, the Price Comparison Module, and the Peer-to-Peer Marketplace Inventory. 
+The scope of RigRadar covers the backend database management and frontend user interface for three main operational modules: the Cross-Retailer Search Engine, the Price Comparison Module, and the Peer-to-Peer Marketplace Inventory. 
 
 **1.4.2 Targeted User** 
 The target users encompass PC builders, hardware enthusiasts, and gamers looking to source components, as well as private sellers looking to trade in or sell their used PC parts. 
@@ -200,7 +200,7 @@ sequenceDiagram
 ```
 
 ### 1.9 SUMMARY
-In summary, BigRadar is a comprehensive MVC-based web application engineered to solve the inefficiencies of fragmented PC hardware sourcing.  By unifying cross-retailer search capabilities, dynamic price comparisons, and a secure, Shariah-compliant peer-to-peer marketplace into a single intuitive dashboard, the platform empowers enthusiasts to make data-driven purchasing decisions.  Ultimately, BigRadar streamlines the component sourcing process, ensures high data integrity through strict system validation, and provides a transparent, localized, and highly efficient e-commerce experience for both consumers and private sellers. 
+In summary, RigRadar is a comprehensive MVC-based web application engineered to solve the inefficiencies of fragmented PC hardware sourcing.  By unifying cross-retailer search capabilities, dynamic price comparisons, and a secure, Shariah-compliant peer-to-peer marketplace into a single intuitive dashboard, the platform empowers enthusiasts to make data-driven purchasing decisions.  Ultimately, RigRadar streamlines the component sourcing process, ensures high data integrity through strict system validation, and provides a transparent, localized, and highly efficient e-commerce experience for both consumers and private sellers. 
 
 ### 2.0 REFERENCES
 1. Apache Friends. (n.d.). XAMPP installers and downloads. Retrieved from https://www.apachefriends.org 
@@ -217,11 +217,11 @@ In summary, BigRadar is a comprehensive MVC-based web application engineered to 
 
 ## 1.0 EXECUTIVE SUMMARY
 ### 1.1 Project Overview
-BigRadar is a centralized web application developed using the Laravel Model-View-Controller (MVC) framework. The main purpose of the system is to streamline PC component surveying and purchasing by connecting hardware enthusiasts with official retailers and a peer-to-peer (P2P) secondhand marketplace under a single dashboard. 
+RigRadar is a centralized web application developed using the Laravel Model-View-Controller (MVC) framework. The main purpose of the system is to streamline PC component surveying and purchasing by connecting hardware enthusiasts with official retailers and a peer-to-peer (P2P) secondhand marketplace under a single dashboard. 
 
 The system was built using Laravel 10.x, MySQL for database management, the Blade templating engine for dynamic web pages, and Tailwind CSS to ensure a responsive and user-friendly interface.
 
-Instead of relying on fragmented methods such as navigating multiple retailer sites or local forums, BigRadar provides a more organized and reliable platform for sourcing hardware. The system benefits both consumers and private sellers while supporting ethical and Shariah-compliant e-commerce values.
+Instead of relying on fragmented methods such as navigating multiple retailer sites or local forums, RigRadar provides a more organized and reliable platform for sourcing hardware. The system benefits both consumers and private sellers while supporting ethical and Shariah-compliant e-commerce values.
 
 ### 1.2 Objectives Achieved
 The project successfully achieved its main objectives:
@@ -251,7 +251,7 @@ This situation leads to several key issues:
 4. To implement a secure authentication system that separates users into distinct roles with their own dashboards and permissions.
 
 ### 2.4 Project Scope
-The BigRadar application is designed to include several core features within its current development scope:
+The RigRadar application is designed to include several core features within its current development scope:
 - **User Registration and Authentication:** Users, including consumers and sellers, are able to register, log in, and manage their accounts securely through Laravel’s built-in authentication system.
 - **Marketplace Listing Management (CRUD):** Sellers are able to manage component listings by creating, viewing, updating, and deleting them. Each listing includes details such as title, quantity, price, condition, and location.
 - **Cross-Retailer Search & Comparison:** Consumers can search all available parts, apply filters based on category or location, and compare official retail prices with P2P used prices.
@@ -385,7 +385,7 @@ sequenceDiagram
 ```
 
 ### 3.3 System Architecture Overview
-BigRadar follows the standard Laravel MVC (Model-View-Controller) framework. A browser request first reaches the Route definitions in `routes/web.php`, which forwards the request to the suitable Controller. The controller communicates with Eloquent Models to retrieve or store data in the MySQL Database. The processed information is subsequently sent to a Blade View that generates the final HTML response to the browser. Middleware layers sit between the route and controller to implement authentication and role-based access before any controller logic executes.
+RigRadar follows the standard Laravel MVC (Model-View-Controller) framework. A browser request first reaches the Route definitions in `routes/web.php`, which forwards the request to the suitable Controller. The controller communicates with Eloquent Models to retrieve or store data in the MySQL Database. The processed information is subsequently sent to a Blade View that generates the final HTML response to the browser. Middleware layers sit between the route and controller to implement authentication and role-based access before any controller logic executes.
 
 ## 4.0 TECHNICAL IMPLEMENTATION
 ### 4.1 Models & Database Migrations
@@ -394,7 +394,7 @@ The platform is structured around several primary Eloquent models: `User`, `Mark
 The `MarketplaceListing` model acts as the central hub for P2P inventory. It monitors essential item information, such as title, description, asking price, pickup location, image, and the current status. This model maintains a `belongsTo` connection to both the `User` and `Category` models.
 
 ### 4.2 Routes Configuration
-Routes in BigRadar are categorized into groups located in `routes/web.php`:
+Routes in RigRadar are categorized into groups located in `routes/web.php`:
 - **Public routes:** The landing page and core marketplace views are accessible to all visitors without authentication.
 - **Auth routes:** Registration and login are handled by default scaffolding.
 - **Protected routes:** Utilizing `auth` middleware, these routes allow buyers to interact with listings, chat with sellers, and manage their experience securely.
@@ -406,16 +406,16 @@ The `PageController` handles standard page display operations. When an authentic
 The authentication system utilizes standard Laravel session-based auth. Role-based logic ensures strict security. The registration process verifies inputs before the user is persisted to the database with a hashed password generated by `Hash::make()`. 
 
 ### 4.5 Views & Blade Template Engine
-All views in BigRadar are based on a main layout specified in Blade. This structure fetches shared assets: Google Fonts, Tailwind CSS via Vite, and interactive components. Child views extend the layout and inject their content into named sections ensuring a consistent header, navbar, and footer across all pages with no code duplication.
+All views in RigRadar are based on a main layout specified in Blade. This structure fetches shared assets: Google Fonts, Tailwind CSS via Vite, and interactive components. Child views extend the layout and inject their content into named sections ensuring a consistent header, navbar, and footer across all pages with no code duplication.
 
 ## 5.0 USER INTERFACE DESIGN
 ### 5.1 Use of Media (20 marks)
-The BigRadar platform incorporates a mix of static and dynamic media:
+The RigRadar platform incorporates a mix of static and dynamic media:
 - **Dynamic Product Images:** Managed natively via Laravel Storage, uploaded food/component images provide buyers with a transparent, realistic view of the item.
 - **Categorization Badges:** Utilizing Tailwind classes, listings dynamically pull classification data to display stylized tags.
 
 ### 5.2 Design, Colour Scheme & Layout (20 marks)
-The user interface design of BigRadar relies on modern UI frameworks:
+The user interface design of RigRadar relies on modern UI frameworks:
 - **Colour Palette:** Built around a sleek dark mode aesthetic with strong Brand accents (primary greens and blues) to symbolize high-performance technology. 
 - **Typography Choices:** The application imports Google Fonts `Inter` to give an elegant, highly legible feel for data-heavy component specifications.
 - **Grid Structure:** Built entirely on Tailwind CSS grid and flex systems, the platform utilizes a mobile-first responsive layout. Content hierarchy is cleanly segmented.
@@ -453,9 +453,9 @@ The application has been engineered to support cloud deployment. The live enviro
 
 ## 8.0 CONCLUSION
 ### 8.1 Summary of Achievements
-The BigRadar project has successfully delivered a robust, centralized web application built on the Laravel MVC framework tailored specifically toward mitigating the compounding inefficiencies of sourcing PC parts. The development group successfully materialized a multi-role user architecture.
+The RigRadar project has successfully delivered a robust, centralized web application built on the Laravel MVC framework tailored specifically toward mitigating the compounding inefficiencies of sourcing PC parts. The development group successfully materialized a multi-role user architecture.
 
-Buyers benefit from real-time visibility over official and surplus items, shifting consumer habits away from unstructured communication channels. By managing data structures through an optimized MySQL schema, BigRadar presents a reliable framework supporting community welfare in accordance with Shariah-compliant e-commerce practices.
+Buyers benefit from real-time visibility over official and surplus items, shifting consumer habits away from unstructured communication channels. By managing data structures through an optimized MySQL schema, RigRadar presents a reliable framework supporting community welfare in accordance with Shariah-compliant e-commerce practices.
 
 ### 8.2 Future Improvements
 To expand the operational efficiency and community impact of the platform, several key upgrades are proposed for future development iterations:

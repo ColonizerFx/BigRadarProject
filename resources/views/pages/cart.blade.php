@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', 'Shopping Cart - BigRadar')
+@section('title', 'Shopping Cart - RigRadar')
 
 @section('content')
 <div class="w-full px-4 md:px-8 xl:px-12 mx-auto py-12">

@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', $item->title . ' - BigRadar Marketplace')
+@section('title', $item->title . ' - RigRadar Marketplace')
 
 @section('content')
 

@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', 'Chat - BigRadar')
+@section('title', 'Chat - RigRadar')
 
 @section('content')
 <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 py-10 h-[calc(100vh-100px)] flex flex-col">

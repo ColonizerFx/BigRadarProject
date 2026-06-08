@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', 'My Account - BigRadar')
+@section('title', 'My Account - RigRadar')
 
 @section('content')
 <div class="bg-slate-50 min-h-[calc(100vh-100px)]">

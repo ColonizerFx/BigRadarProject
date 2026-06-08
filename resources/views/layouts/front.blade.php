@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'BigRadar - Price Comparison & Marketplace')</title>
+    <title>@yield('title', 'RigRadar - Price Comparison & Marketplace')</title>
 
     <!-- CompAsia-style: Inter font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-8">
             <!-- Logo -->
             <a href="{{ url('/') }}" class="text-3xl font-black text-brand tracking-tight flex-shrink-0 transition-opacity hover:opacity-80" style="font-family: 'Inter', sans-serif; letter-spacing: -0.5px;">
-                BigRadar
+                RigRadar
             </a>
 
             <!-- Search Bar — CompAsia pill style -->
@@ -106,7 +106,7 @@
     <footer class="bg-white border-t border-gray-100 pt-10 pb-6 text-xs text-gray-500" style="font-family: 'Inter', sans-serif;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
             <div class="col-span-2 md:col-span-1">
-                <a href="{{ url('/') }}" class="text-xl font-black text-brand mb-3 inline-block">BigRadar</a>
+                <a href="{{ url('/') }}" class="text-xl font-black text-brand mb-3 inline-block">RigRadar</a>
                 <p class="text-gray-400 text-xs leading-relaxed">Your trusted platform for authentic tech and hardware.</p>
             </div>
             <div>
@@ -129,7 +129,7 @@
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold text-gray-800 mb-3 text-sm">About BigRadar</h4>
+                <h4 class="font-bold text-gray-800 mb-3 text-sm">About RigRadar</h4>
                 <ul class="space-y-2">
                     <li><a href="{{ url('/about') }}" class="hover:text-brand transition-colors">About Us</a></li>
                 </ul>
@@ -142,7 +142,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-100 pt-6 text-center text-gray-400">
-            Copyright &copy; {{ date('Y') }} BigRadar. All Rights Reserved.
+            Copyright &copy; {{ date('Y') }} RigRadar. All Rights Reserved.
         </div>
     </footer>
 </body>

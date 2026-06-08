@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', $product->name . ' - BigRadar')
+@section('title', $product->name . ' - RigRadar')
 
 @section('content')
 
@@ -151,7 +151,7 @@
             <div class="text-3xl mt-1">📡</div>
             <div>
                 <p class="font-bold text-gray-900 text-[15px]">Enable location for the best experience</p>
-                <p class="text-gray-500 text-sm mt-1">BigRadar will find stores nearest to you and show walking/driving distances in real time. Your location is never stored or shared.</p>
+                <p class="text-gray-500 text-sm mt-1">RigRadar will find stores nearest to you and show walking/driving distances in real time. Your location is never stored or shared.</p>
             </div>
         </div>
 

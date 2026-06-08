@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', 'PC Builder - BigRadar')
+@section('title', 'PC Builder - RigRadar')
 
 @section('content')
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8" x-data="pcBuilder()">

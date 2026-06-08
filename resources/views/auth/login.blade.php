@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', 'Sign In - BigRadar')
+@section('title', 'Sign In - RigRadar')
 
 @section('content')
 <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -10,7 +10,7 @@
                 Welcome Back
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
-                Sign in to your BigRadar account
+                Sign in to your RigRadar account
             </p>
         </div>
         

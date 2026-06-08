@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', 'Checkout - BigRadar')
+@section('title', 'Checkout - RigRadar')
 
 @section('content')
 

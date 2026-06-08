@@ -1,6 +1,6 @@
-@extends('layouts.front')
+﻿@extends('layouts.front')
 
-@section('title', 'BigRadar - PC Parts Comparison & Marketplace')
+@section('title', 'RigRadar - PC Parts Comparison & Marketplace')
 
 @section('content')
 
@@ -207,7 +207,7 @@
     </div>
 
     <div class="max-w-4xl mx-auto px-4 mt-10 text-center">
-        <p class="text-xl md:text-2xl font-black text-gray-900">"BigRadar – The smart way to buy and sell authentic devices and parts."</p>
+        <p class="text-xl md:text-2xl font-black text-gray-900">"RigRadar – The smart way to buy and sell authentic devices and parts."</p>
     </div>
 </div>
 
