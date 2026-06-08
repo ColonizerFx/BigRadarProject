@@ -535,9 +535,6 @@ The user interface of RigRadar was developed with a strong emphasis on a minimal
 | T-04 | Image Upload | Valid image file | Image is uploaded successfully, stored in the public directory, and its path is recorded in the database. | Image was uploaded, stored correctly, and displayed as expected. | PASS |
 | T-05 | Mobile Responsiveness | Browser resized to mobile dimensions | Layout adapts responsively, with components stacking appropriately for smaller screens. | Interface remained functional, and all elements were displayed correctly on mobile view. | PASS |
 
-### 6.2 Deployment Verification
-The application has been engineered to support cloud deployment. The live environment connects seamlessly to a cloud-hosted MySQL database instance. Critical production parameters configured within the environment variable engine include `APP_ENV=production` and `DB_HOST` variables mapping to the production schema.
-
 ## 7.0 CHALLENGES AND SOLUTIONS
 
 ### 7.1 Technical Challenges
