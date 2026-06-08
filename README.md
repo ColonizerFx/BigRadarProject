@@ -339,13 +339,11 @@ sequenceDiagram
     actor IT as IT Support Staff
     participant Browser as Browser (Blade View)
     
-    box rgba(128, 128, 128, 0.2) Laravel MVC Application
-        participant Router as Router & Middleware
-        participant Validator as LoanRequest<br/>(Form Validation)
-        participant Controller as InventoryController
-        participant Product as Product Model
-        participant Loan as InventoryLoan Model
-    end
+    participant Router as Router & Middleware
+    participant Validator as LoanRequest<br/>(Form Validation)
+    participant Controller as InventoryController
+    participant Product as Product Model
+    participant Loan as InventoryLoan Model
     
     participant DB as MySQL Database
 
