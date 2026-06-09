@@ -1,4 +1,4 @@
-# PROJECT PROPOSAL GUIDELINES 
+﻿# PROJECT PROPOSAL GUIDELINES 
 ### BIIT 2305 
 ### PROPOSAL FOR PROJECT DEVELOPMENT 
 ### RigRadar: Centralized PC Component Locator & Marketplace 
