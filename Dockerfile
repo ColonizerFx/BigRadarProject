@@ -12,7 +12,7 @@ FROM php:8.2-cli
 RUN apt-get update && apt-get install -y \
     git curl zip unzip \
     libpng-dev libjpeg62-turbo-dev libfreetype-dev \
-    libzip-dev libonig-dev \
+    libzip-dev libonig-dev libsqlite3-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring zip gd bcmath \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
